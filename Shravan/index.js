@@ -7,7 +7,7 @@ const app = express();
 
 app.use(express.json());
 
-app.use('/user', userRouter);
+app.use('/', userRouter);
 app.use('/admin', adminRouter);
 
 app.listen(process.env.port,() => {
@@ -20,7 +20,6 @@ app.listen(process.env.port,() => {
             console.log(`Connected to DB`);
         }
     });
-
     console.log(`running at ${process.env.port}`);
 })
 
