@@ -1,1 +1,57 @@
-ad
+body{
+    margin: 0px;
+    padding: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#navbar{
+    background-color: #0a2540;
+    height: 100px;
+    color: white;
+    
+    
+}
+
+#navbar > div{
+    display: flex;
+    
+    margin: auto;
+    border: 1px solid green;
+    width: 60%;
+    height: 100px;
+
+}
+#navbar a{
+    text-decoration: none;
+    color: #7387db;
+}
+
+#img{
+    width: 20%;
+    border: 1px solid red;
+    display: grid;
+    justify-content: flex-end;
+    align-items: center;
+    
+    
+}
+
+#img img{
+    width: 40%;
+    border-radius: 50%;
+    margin-left: 50%;
+    border: 1px solid yellow ;
+    
+}
+
+#admin{
+    width: 100%;
+    margin-top: 40px;
+    font-weight: bolder;
+    font-size: 40px;
+    text-align: right;
+    
+    border:1px solid red;
+    
+    
+}
