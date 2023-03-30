@@ -1,0 +1,202 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+/*--------------------
+Buttons
+--------------------*/
+.btn {
+  display: block;
+  background-color: #e7ca71;
+  color: hsl(0, 0, 100);
+  text-decoration: none;
+  margin: 20px 0;
+  padding: 15px 15px;
+  border-radius: 5px;
+  position: relative;
+} 
+.btn:hover::after {
+    background: hsla(0, 0, 0, 0.1);
+    box-shadow: inset 0 3px 0 hsla(0, 0, 0, 0.2);
+  }
+.btn::after {
+    content: '';
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: all .2s ease-in-out;
+    box-shadow: inset 0 3px 0 hsla(0, 0, 0, 0), 0 3px 3px hsla(0, 0, 0, .2);
+    border-radius: 5px;
+  }
+.btn-social {
+  padding-left: 64px;
+  position: relative;
+  z-index: 1;
+  
+  
+  
+}
+.btn-social .fa-facebook {
+    position: absolute;
+    background-color: hsl(221, 38%, 44%);
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 50px;
+    height: 100%;
+    text-align: center;
+    background: hsla(0, 0, 0, 0.1);
+    line-height: 3.2;
+    border-radius: 5px 0 0 5px;
+}
+.btn-social .fa-google {
+    position: absolute;
+    background-color: hsl(7, 73%, 60%);
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 50px;
+    height: 100%;
+    text-align: center;
+    background: hsla(0, 0, 0, 0.1);
+    line-height: 3.2;
+    border-radius: 5px 0 0 5px;
+}
+.btn-social .fa-brands {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 50px;
+    height: 100%;
+    text-align: center;
+    background: hsla(0, 0, 0, 0.1);
+    line-height: 3.2;
+    border-radius: 5px 0 0 5px;
+    background-color: rgb(29, 27, 27);
+}
+.btn-facebook {
+    color: white;
+  background-color: hsl(221, 44%, 41%);
+}
+.btn-github {
+    color: white;
+  background-color: rgb(21, 20, 20);
+}
+.btn-google {
+    color: white;
+  background-color: hsl(7, 71%, 55%); 
+}
+
+
+/*--------------------
+Form
+--------------------*/
+.form fieldset {
+    border: none;
+    padding: 0;
+    margin: 20px 0;
+    position: relative;
+     
+}
+.form input {
+    width: 100%;
+    height: 48px;
+    color: hsl(0, 0, 20);
+    padding: 15px 40px 15px 15px;
+    border-radius: 5px;
+    font-size: 14px;
+    outline: none!important;
+    border: 1px solid black;
+    box-shadow: inset 0 1px 4px hsla(0, 0, 0, 0.2);
+    vertical-align: top;
+}
+.form button {
+    cursor: pointer;
+    width: 100%;
+    color: #052639;
+    outline: none!important;
+    background-color: #e7ca71;
+    /* background: linear-gradient(-5deg, hsl(86, 61%, 44%), hsl(86, 65%, 54%)); */
+    border: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    box-shadow: 0 3px 0px hsla(86, 21%, 44%, 0.2);
+    text-shadow: 0 2px 3px hsla(0, 0, 0, 0.2);
+}
+
+/*--------------------
+Signup
+--------------------*/
+.signup {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  width: 800px;
+  background: hsl(0, 0, 100);
+  border-radius: 10px;
+  box-shadow: 0 3px 25px hsla(0, 0, 0, 0.2);
+  overflow: hidden;
+  display: flex;
+}
+
+.signup-connect
+{
+  width: 50%;
+  padding: 30px 50px;
+}
+
+.signup-classic
+{
+  width: 50%;
+  padding: 30px 50px;
+  background-color: #f4f1e8;
+}
+
+.signup-connect {
+  /* background: linear-gradient(134deg, hsl(44, 96%, 65%), hsl(34, 95%, 45%)); */
+  background-color: #b0c1c5;
+  /* color: hsl(0, 0, 100); */
+}
+.signup-connect h1 {
+    color: #052639;
+    font-size: 30px;
+    margin-top: 10px;
+    margin-bottom: 40px;
+    text-shadow: 0 2px 3px hsla(0, 0, 0, 0.1);
+}
+
+.signup-classic h2{
+    font-weight: bolder;
+    color: #052639;
+    font-size: 16px;
+    margin-top: 23px;
+    margin-bottom: 43px;
+    text-shadow: 0 2px 3px hsla(0, 0, 0, 0.1);
+}
+.signup-classic fieldset::after {
+    content: '\f007';
+    font-family: FontAwesome;
+    position: absolute;
+    right: 15px;
+    top: 17px;
+    z-index: 2;
+    width: 20px;
+    color: hsla(0, 0, 0, .2);
+    text-align: center;
+}
+.signup-classic .email::after {
+    content: '\f0e0';
+    opacity: 0.5;
+}
+
+.signup-classic .password::after {
+    content: '\f023';
+    opacity: 0.5;
+}
