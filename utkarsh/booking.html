@@ -5,36 +5,88 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="./bokking.css">
 </head>
 <body>
     
     <div id="navbar">
         <div>
-            <div>
+            <div id="img">
                 <img src="./Tooth Tracker.png" alt="">
             </div>
             <div>
                 <h3>Tooth Tracker - CO</h3>
-                <p>5670 Greenwood Plaza Blvd UNIT 404, Greenwood Village, CO 8011 |  <a href="">(303) 220-7662</a></p>
+               
+                <p>5670 Greenwood Plaza Blvd UNIT 404, Greenwood Village, CO 8011   |    <a href="">(303) 220-7662</a></p>
             </div>
         </div>
     </div>
 
-    <h3>Hi, Welcome to Tooth Tracker - CO</h3>
-    <h3>We are excited to meet you.</h3>
-    <p>What would you like to come in for?</p>
-    <div id="condition">
-        <button>New Patient Cleaning & Exam (14 & under)</button>
-        <button>New Patient Emergency/Tooth Pain</button>
-        <button>New Patient Cleaning & Exam - Adult</button>
-        <button>Dental Implant Consult</button>
-        <button>Invisalign Consult</button>
+    <div id="mid"><h3>Hi, Welcome to Tooth Tracker - CO</h3>
+        <h3>We are excited to meet you.</h3>
+        <p>What would you like to come in for?</p></div>
 
-    </div>
-    <div id="toggle">
-        <button>Next</button>
+    
+    <div id="condition">
+        <button id="b1" >New Patient Cleaning & Exam (14 & under)</button>
+        <button id="b2">New Patient Emergency/Tooth Pain</button>
+        <button id="b3">New Patient Cleaning & Exam - Adult</button>
+        <button id="b4">Dental Implant Consult</button>
+        
 
     </div>
     
+    
 </body>
 </html>
+<script>
+
+    let b1 = document.getElementById("b1")
+
+    b1.addEventListener("click",myFunc1)
+
+    function myFunc1(){
+        
+        localStorage.setItem("condition","New Patient Cleaning & Exam (14 & under)")
+        window.location.href="./booking1.html"
+
+    }
+
+    let b2 = document.getElementById("b2")
+
+    b2.addEventListener("click",myFunc2)
+
+    function myFunc2(){
+       
+        localStorage.setItem("condition","New Patient Emergency/Tooth Pain")
+        window.location.href="./booking1.html"
+    }
+
+    let b3 = document.getElementById("b3")
+
+    b3.addEventListener("click",myFunc3)
+
+    function myFunc3(){
+      
+        localStorage.setItem("condition","New Patient Cleaning & Exam - Adult")
+        window.location.href="./booking1.html"
+    }
+
+    
+    let b4 = document.getElementById("b4")
+
+    b4.addEventListener("click",myFunc4)
+
+    function myFunc4(){
+        
+        localStorage.setItem("condition","Dental Implant Consult")
+        window.location.href="./booking1.html"
+    }
+
+    
+
+
+    
+
+
+</script>

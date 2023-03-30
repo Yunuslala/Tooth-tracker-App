@@ -42,24 +42,38 @@ body{
     border: 1px solid yellow ;
     
 }
-#mid{
-    margin: auto;
-    width: 60%;
-    border: 1px solid red;
-    text-align:left;
-    padding-top: 40px;
-}
 
 #condition{
-width:60%;
+    width: 60%;
+    margin: auto;
+    margin-top: 40px;
+    margin-bottom: 10px;
+}
+hr{
+    width: 60%;
+    margin: auto;
+}
+
+
+#mid{
+    width: 60%;
+    margin: auto;
+    text-align: left;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+#doctors{
+    width:60%;
 margin: auto;
 display: grid;
 grid-template-columns: repeat(2,1fr);
 gap: 20px;
-padding-top: 40px;
+margin-bottom: 40px;
+
 }
 
-#condition button{
+#doctors button{
 
     padding-top: 20px;
     padding-bottom: 20px;
@@ -68,11 +82,34 @@ padding-top: 40px;
     color: #007bff;
     background-color: white;
     border: 0.3px solid rgb(78, 75, 75);
+
 } 
 
-#condition button:hover{
+#doctors button:hover{
     cursor: pointer;
     background-color: #007bff;
     color: white;
+}
 
+#toggle{
+    width:60%;
+    margin: auto;
+}
+
+#toggle button{
+    width: 30%;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    
+    font-size: 20px;
+    border-radius: 10px;
+    background-color: white;
+    border: 0.3px solid rgb(78, 75, 75);
+}
+#toggle button:hover{
+    cursor: pointer;
+    background-color: black;
+    color: white;
 }

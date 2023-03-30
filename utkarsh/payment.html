@@ -13,6 +13,50 @@
             margin: 0px;
             padding: 0px;
         }
+        body{
+    margin: 0px;
+    padding: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#navbar{
+    background-color: #0a2540;
+    height: 100px;
+    color: white;
+    
+}
+
+#navbar > div{
+    display: flex;
+    
+    margin: auto;
+    border: 1px solid green;
+    width: 60%;
+    height: 100px;
+
+}
+#navbar a{
+    text-decoration: none;
+    color: #7387db;
+}
+
+#img{
+    width: 20%;
+    border: 1px solid red;
+    display: grid;
+    justify-content: flex-end;
+    align-items: center;
+    
+    
+}
+
+#img img{
+    width: 40%;
+    border-radius: 50%;
+    margin-left: 50%;
+    border: 1px solid yellow ;
+    
+}
         #payment-div {
             width: 30%;
             height: auto;
@@ -173,6 +217,17 @@
 </head>
 
 <body>
+    <div id="navbar">
+        <div>
+            <div id="img">
+                <img src="./Tooth Tracker.png" alt="">
+            </div>
+            <div>
+                <h3>Tooth Tracker - CO</h3>
+                <p>5670 Greenwood Plaza Blvd UNIT 404, Greenwood Village, CO 8011 |  <a href="">(303) 220-7662</a></p>
+            </div>
+        </div>
+    </div>
 
     
 
@@ -183,7 +238,7 @@
             <h3>PAYMENT</h3>
             <select id="change">
                 <option value="">Method Of Payment...</option>
-                <option value="COD">Cash On Delivery(COD)</option>
+                <option value="COD">Pay on visit</option>
                 <option value="Prepaid">Prepaid</option>
             </select>
             <p>Extra 10% off on online</p>
