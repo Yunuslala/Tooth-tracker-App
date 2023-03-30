@@ -28,65 +28,13 @@
 
     
     <div id="condition">
-        <button id="b1" >New Patient Cleaning & Exam (14 & under)</button>
-        <button id="b2">New Patient Emergency/Tooth Pain</button>
-        <button id="b3">New Patient Cleaning & Exam - Adult</button>
-        <button id="b4">Dental Implant Consult</button>
-        
-
+        <button id="b1" value="TeethCleaning">New Patient Cleaning & Exam (14 & under)</button>
+        <button id="b2" value="TeethPain">New Patient Emergency/Tooth Pain</button>
+        <button id="b3" value="TeethCleaningExam">New Patient Cleaning & Exam - Adult</button>
+        <button id="b4" value="TeethConsult">Dental Implant Consult</button>
     </div>
     
     
 </body>
 </html>
-<script>
-
-    let b1 = document.getElementById("b1")
-
-    b1.addEventListener("click",myFunc1)
-
-    function myFunc1(){
-        
-        localStorage.setItem("condition","New Patient Cleaning & Exam (14 & under)")
-        window.location.href="./booking1.html"
-
-    }
-
-    let b2 = document.getElementById("b2")
-
-    b2.addEventListener("click",myFunc2)
-
-    function myFunc2(){
-       
-        localStorage.setItem("condition","New Patient Emergency/Tooth Pain")
-        window.location.href="./booking1.html"
-    }
-
-    let b3 = document.getElementById("b3")
-
-    b3.addEventListener("click",myFunc3)
-
-    function myFunc3(){
-      
-        localStorage.setItem("condition","New Patient Cleaning & Exam - Adult")
-        window.location.href="./booking1.html"
-    }
-
-    
-    let b4 = document.getElementById("b4")
-
-    b4.addEventListener("click",myFunc4)
-
-    function myFunc4(){
-        
-        localStorage.setItem("condition","Dental Implant Consult")
-        window.location.href="./booking1.html"
-    }
-
-    
-
-
-    
-
-
-</script>
+<script src="./booking.js"></script>
