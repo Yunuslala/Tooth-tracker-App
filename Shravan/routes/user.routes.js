@@ -8,7 +8,6 @@ require('dotenv').config();
 const saltRounds = +process.env.saltRounds;
 const connection = mysql.createConnection(process.env.MySQLURL);
 const { ScheduleSystem } = require("../app");
-const { authenticate } = require('../middlewares/authenticator');
 
 const userRouter = express.Router();
 const system=new ScheduleSystem();
@@ -21,9 +20,6 @@ userRouter.post('/register',registrationValidator ,async (req, res) => {
     const data = req.body;
     if(data.role !== 'admin'){
         data.role = "user"
-    }
-    if(new Date(data.date_of_birth) == 'Invalid date'){
-        return res.status(422).send({msg:`Please provide date_of_birth in correct format (YYYY-MM-DD)`})
     }
     const password = await bcrypt.hash(data.password, saltRounds);
     connection.query(`select * from users where email = '${data.email}';`,(err,rows) => {
@@ -76,7 +72,7 @@ userRouter.post('/login',loginvalidator ,(req, res) => {
 })
 
 userRouter.get('/slots',(req, res) => {
-    connection.query('select * from slots where isbooked = 0',(err, rows, fields) => {
+    connection.query('select * from slots',(err, rows, fields) => {
         if(err){
             console.log(err);
             return res.status(500).send({msg: `Something went wrong, please try again`,err: err.message});
@@ -95,55 +91,41 @@ userRouter.get('/doctors',(req, res) => {
     })
 })
 
-userRouter.use(authenticate("user"));
-
-userRouter.post('/newMeeting',(req, res) => {
-    const data = req.body;
-    const token = req.headers.authorization;
-    const user = jwt.verify(token,process.env.key);
-
-    if(!data.sub_category || !data.category || !data.slotId){
-        return res.status(401).send({msg:`Please provide category, sub category and slotId`});
+userRouter.post('/book',(req, res) => {
+    const data = req.body
+    if(!data.date_of_birth || !data.purpose || !data.provider || !data.slot){
+        return res.status(401).send(`PLease provide purpose, provider and slot`);
     }
-
-    connection.query(`select * from slots where id = ${data.slotId}`,(err, rows) => {
-
-        if(err){
-            console.log(err);
-            return res.status(500).send({msg: `Something went wrong`,err: err.message});
-        }
-
-        else if(!rows.length){
-            return res.status(404).send({msg: `slot Not available`});
-        }
-
-        else if(rows[0].category !== data.category || rows[0].sub_category !== data.sub_category){
-            return res.status(409).send({msg:`This slot is not available for provided category or sub_category`})
-        }
-
-        const slot = rows[0];
-
-        connection.query(`insert into meetings (userId, slotId, category, sub_category) values ('${user.id}', ${slot.id}, '${data.category}', '${data.sub_category}')`,(err, rows) => {
-
-            if(err){
-                console.log(err);
-                return res.status(500).send({msg: `Something went wrong`,err: err.message});
-            }
-
-            system.innitializeMeeting(data.category, data.sub_category, +user.id);
-
-            connection.query(`update slots set isbooked = 1, meetingId = ${rows.insertId} where id = ${slot.id}`,(err, rows) => {
-
-                if(err){
-                    console.log(err);
-                    return res.status(500).send({msg: `Something went wrong`,err: err.message});
-                }
-
-                res.status(200).send({msg: `Meeting Initialised`,rows})
-            });
-        })
-        
-    })
+    
 })
 
 module.exports = {userRouter,connection};
+
+
+/*
+data = {
+    purpose: string,
+    provider: doctor id
+    slot: slot id
+}
+
+*/
+
+
+
+
+/*
+data
+{
+    patient_name = string
+    new_patient = booloean
+    date_of_birth = date
+    email = string
+    phone = string
+    purpose = Purpose(string)
+    provider = Provider(obj)
+    slot = slot(obj)
+}
+*/
+
+

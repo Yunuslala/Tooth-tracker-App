@@ -1,205 +1,57 @@
-body {
+body{
     margin: 0px;
     padding: 0px;
     font-family: Arial, Helvetica, sans-serif;
 }
 
-#navbar {
+#navbar{
     background-color: #0a2540;
     height: 100px;
     color: white;
-
-
+    
+    
 }
 
-#navbar>div {
+#navbar > div{
     display: flex;
-
+    
     margin: auto;
     border: 1px solid green;
     width: 60%;
     height: 100px;
 
 }
-
-#navbar a {
+#navbar a{
     text-decoration: none;
     color: #7387db;
 }
 
-#img {
+#img{
     width: 20%;
     border: 1px solid red;
     display: grid;
     justify-content: flex-end;
     align-items: center;
-
-
+    
+    
 }
 
-#img img {
+#img img{
     width: 40%;
     border-radius: 50%;
     margin-left: 50%;
-    border: 1px solid yellow;
-
+    border: 1px solid yellow ;
+    
 }
 
-#admin {
+#admin{
     width: 100%;
     margin-top: 40px;
     font-weight: bolder;
     font-size: 40px;
     text-align: right;
-
-    border: 0px solid red;
-    margin-bottom: 20px;
-
-
-}
-
-#view {
-    border: 0px solid red;
-    display: flex;
-    margin-top: 40px;
-    height: auto;
-}
-
-#button {
-    border: 0px solid blue;
-    width: 15%;
-}
-
-#display {
-    border: 1px solid #0a2540;
-    width: 85%;
-    padding-top: 20px;
-}
-
-#button button {
-    width: 100%;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    background-color: white;
-    font-size: 30px;
-    border: 0.2px solid #0a2540;
-    font-family: sans-serif;
-    font-weight: 500;
-
-}
-
-#button button:hover {
-    cursor: pointer;
-    background-color: black;
-    color: white;
-}
-
-#user {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    display: none;
-}
-
-#user div {
-    text-align: center;
-}
-
-#user div img {
-    border: 1px solid red;
-
-}
-
-#doctor {
-    display: none;
-}
-
-
-#d1 {
-    text-align: center;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-
-
-}
-
-#d1 img {
-    border: 1px solid red;
-
-    width: 50%;
-
-}
-
-
-#form1 {
-    border: 1px solid #0a2540;
-    border-radius: 15px;
-    padding-top: 20px;
-    width: 30%;
-    text-align: center;
-    margin: auto;
-}
-
-#form1 input {
-    padding-top: 10px;
-    padding-bottom: 10px;
-    margin-bottom: 10px;
-    margin-top: 10px;
-}
-
-#form1 button {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    padding-left: 40px;
-    padding-right: 40px;
-    margin-bottom: 20px;
-    margin-top: 10px;
-    border-radius: 10px;
-    background-color: white;
-    font-size: 15px;
-    font-weight: 600;
-}
-
-#form1 button:hover {
-    background-color: #0a2540;
-    color: white;
-    cursor: pointer;
-}
-
-#slots{
-    /* display: none; */
-}
-
-#form2 {
-    border: 1px solid #0a2540;
-    border-radius: 15px;
-    padding-top: 20px;
-    width: 30%;
-    text-align: center;
-    margin: auto;
-}
-
-#form2 input {
-    padding-top: 10px;
-    padding-bottom: 10px;
-    margin-bottom: 10px;
-    margin-top: 10px;
-}
-
-#form2 button {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    padding-left: 40px;
-    padding-right: 40px;
-    margin-bottom: 20px;
-    margin-top: 10px;
-    border-radius: 10px;
-    background-color: white;
-    font-size: 15px;
-    font-weight: 600;
-}
-
-#form2 button:hover {
-    background-color: #0a2540;
-    color: white;
-    cursor: pointer;
+    
+    border:1px solid red;
+    
+    
 }

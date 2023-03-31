@@ -79,17 +79,17 @@ enum Method{
   //end
   //meetingId
   //ID
-class Slot{
+class slot{
   ID:number
   start: Date
   end: Date 
   date: Date
-  duration:number
+  duration:string
   category:string
   meetingId:number |null
   sub_category:string
   isbooked:boolean
-  constructor(ID:number,date:Date,category:string,sub_category:string,duration:number,start:Date,end:Date){
+  constructor(ID:number,date:Date,category:string,sub_category:string,duration:string,start:Date,end:Date){
      this.ID=ID;
      this.start=start;
      this.end=end;
@@ -177,7 +177,7 @@ class Slot{
 class ScheduleSystem{
   Meetings:Meeting[]
   doctors:DOCTORS[]
-  slots:Slot[]
+  slots:slot[]
   users:USER[]
   Payments:Peyment[]
   constructor(){
@@ -199,14 +199,20 @@ class ScheduleSystem{
     this.doctors.push(doctor);
     return doctor
   }
-  initializeSlot(category:string,sub_category:string,duration:number,start:string,date:string){
-    console.log(`${date} ${start}`);
-    const Start = new Date(`${date} ${start}`);
-    console.log(Start);
-    const end = new Date(new Date().setMinutes(new Date().getMinutes() + duration));
-    let slot = new Slot(this.slots.length+1, new Date(date), category, sub_category, duration, Start, end);
-    this.slots.push(slot);
-    return slot
+  initializeSlot(category:string,sub_category:string,duration:string,start:string,date:string){
+    if(!date){
+      date = new Date().toDateString();
+    }
+    else{
+      date = new Date(date).toDateString();
+    }
+    const dateString = `${new Date().getFullYear()}-${new Date().getMonth()}-${new Date().getDate()}`
+    const Start = new Date(``)
+
+
+    // let slots=new slot(id,date,category,sub_category,duration,conertime,end);
+    // this.slots.push(slots);
+    // return slots
   }
    slotsof(){
     return this.slots
@@ -215,21 +221,21 @@ class ScheduleSystem{
     let id=this.Meetings.length+1;
     let slotid:number=1;
     let check=this.slots.map((item)=>{
-      if(item.category==category && item.sub_category==sub_category){
+      if(item.category==category&&item.sub_category==sub_category){
         item.isbooked=true;
         item.meetingId=id;
         slotid=item.ID
         return true
       }
     })
-    if(check){
-      let meeting=new Meeting(id,userID,slotid,category,sub_category);
-      this.Meetings.push(meeting);
-      return meeting
-    }
-    else{
-      return false
-    }
+      if(check){
+        let meeting=new Meeting(id,userID,slotid,category,sub_category);
+        this.Meetings.push(meeting);
+        return meeting
+      }
+      else{
+        return false
+      }
   }
   convertTime(time:string) {
     var timeArray = time.split(":");
@@ -275,13 +281,12 @@ export{ScheduleSystem}
 
 
 
-let system=new ScheduleSystem();
+// let system=new ScheduleSystem();
 
 // let users=system.initializeUser("yunus",new Date("2003-08-12"),"yunus@gmail.com",969510765,"12345");
 // console.log(users);
 
-let slot=system.initializeSlot("cleani","teethCleaning",30,"16:00","2023-03-30");
-console.log(slot);
+// let slots=system.initializeSlot("cleani","teethCleaning","1:30 am","1 hr");
 // let slots2=system.initializeSlot("cleaning","teethWhitening","13:30 pm","1 hr");
 // let slots3=system.initializeSlot("cleaning","teethCleaning","14:30 pm","1 hr");
 

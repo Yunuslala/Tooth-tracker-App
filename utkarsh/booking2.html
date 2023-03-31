@@ -95,7 +95,7 @@
             <option value="2">2031</option>
         </select>
 
-        <select name="" id="">
+        <select name="" id="slottime">
             <option value="">Choose Slot</option>
             <option value="10">10:00 AM</option>
             <option value="11">11:00 AM</option>
@@ -114,30 +114,4 @@
 
 </body>
 </html>
-<script>
-    let condition=document.getElementById("condition")
-
-let cond = localStorage.getItem("condition")
-
-condition.innerHTML=cond
-
-
-let backbtn = document.getElementById("back")
-
-backbtn.addEventListener("click",backFunc)
-
-function backFunc(){
-    window.location.href="booking1.html"
-
-}
-
-
-let nextbtn = document.getElementById("next")
-
-nextbtn.addEventListener("click",nextFunc)
-
-function nextFunc(){
-    window.location.href="payment.html"
-}
-
-</script>
+<script src="./booking2.js"></script>
