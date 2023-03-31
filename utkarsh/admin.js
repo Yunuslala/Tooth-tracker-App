@@ -53,6 +53,8 @@ async function getDoctors() {
     div1.style.display = "none"
     let div2 = document.getElementById("doctor")
     div2.style.display="block"
+    let d = document.getElementById("d1")
+    
 
     doctors.map((item)=>{
 
@@ -61,7 +63,7 @@ async function getDoctors() {
         let h1=document.createElement("h1")
         h1.innerHTML = item.name
 
-        div2.append(img,h1)
+        d.append(img,h1)
 
 
     })
@@ -72,31 +74,46 @@ document.querySelector(".slots").addEventListener("click", () => {
 })
 
 async function getSlots() {
-    let slots = await fetch(`${baseURL}/admin/query`, {
+    let slots = await fetch(`${baseURL}/admin/allSlots`, {
         method: 'GET',
         headers: {
             'content-type': 'application/json',
             'authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTcsIm5hbWUiOiJhZG1pbjEiLCJwaG9uZSI6IjEyMzQ1Njc4OTAiLCJlbWFpbCI6ImFkbWluMUBnbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYiQwNyRxY2lQS3FWZFFRRFd4Lno0VGlKb2hlejc5eXpVZ3hYejRnV0tCU3VJVHo1Y3lvVDNlS292cSIsInJvbGUiOiJhZG1pbiIsImRhdGVfb2ZfYmlydGgiOiIyMDAzLTA4LTEyVDAwOjAwOjAwLjAwMFoiLCJHaXRodWIiOm51bGwsImlhdCI6MTY4MDI4NDE4OH0.t6IyQ9lqngiaaHXSZivHpNRtGkgwQqzDq8lijjnS58c'
-        },
-        body:{"query":"select * from slots"}
+        }
 
     })
     slot = await slots.json();
     console.log(slot);
-    // let div = document.getElementById("user")
-    // div.style.display = "block"
+    let div1 = document.getElementById("user")
+    div1.style.display = "none"
+    let div2 = document.getElementById("doctor")
+    div2.style.display="none"
+    let div3 = document.getElementById("slot")
+    div3.style.display = "block"
+    let d = document.getElementById("s")
 
-    // users.map((item) => {
+    slot.map((item) => {
+        let div = document.createElement("div")
+        
 
-    //     let img = document.createElement("img")
-    //     img.src = "./user.jpg"
-    //     let h1 = document.createElement("h1")
-    //     h1.innerHTML = item.name
+        let h3 = document.createElement("h3")
+        h3.innerHTML=item.category
+        let p1 = document.createElement("p")
+        p1.innerHTML = item.sub_category
+        let p2 = document.createElement("p")
+        p2.innerHTML = item.meetingId
+        let p3 = document.createElement("p")
+        p3.innerHTML = item.start
+        let p4 = document.createElement("p")
+        p4.innerHTML = item.isbooked
 
-    //     div.append(img, h1)
+
+        div.append(h3,p1,p2,p3,p4)
+
+        d.append(div)
 
 
-    // })
+    })
 }
 
 
@@ -123,6 +140,45 @@ postDoctors(obj)
 async function postDoctors(obj){
 
     let data = await fetch(`${baseURL}/admin/addDoctor`,{
+        method:"POST",
+        headers: {
+            'content-type': 'application/json',
+            'authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTcsIm5hbWUiOiJhZG1pbjEiLCJwaG9uZSI6IjEyMzQ1Njc4OTAiLCJlbWFpbCI6ImFkbWluMUBnbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYiQwNyRxY2lQS3FWZFFRRFd4Lno0VGlKb2hlejc5eXpVZ3hYejRnV0tCU3VJVHo1Y3lvVDNlS292cSIsInJvbGUiOiJhZG1pbiIsImRhdGVfb2ZfYmlydGgiOiIyMDAzLTA4LTEyVDAwOjAwOjAwLjAwMFoiLCJHaXRodWIiOm51bGwsImlhdCI6MTY4MDI4NDE4OH0.t6IyQ9lqngiaaHXSZivHpNRtGkgwQqzDq8lijjnS58c'
+        },
+        body:JSON.stringify(obj)
+
+    })
+
+    console.log(obj)
+
+}
+
+
+
+let form2 = document.getElementById("f2")
+
+let s2 = document.getElementById("s2")
+
+s2.onclick = (event)=>{
+event.preventDefault()
+
+let obj ={
+    category: form2.cat.value,
+    sub_category: form2.scat.value,
+    date: form2.date.value,
+    start: form2.st.value,
+    duration: form2.dur.value
+}
+postDoctors(obj)
+
+//console.log(obj)
+
+}
+
+
+async function postDoctors(obj){
+
+    let data = await fetch(`${baseURL}/admin/addSlot`,{
         method:"POST",
         headers: {
             'content-type': 'application/json',
