@@ -12,7 +12,7 @@ const authenticate = (role) => {
                 return res.status(500).send({msg: `Something went wrong, please try again`,err: err.message});
                 
             }
-            else if (decoded.role !== role && decoded.role !== "admin"){
+            else if (decoded.role !== role){
                 return res.status(403).send({msg: `Access denied`});
             }
             else{

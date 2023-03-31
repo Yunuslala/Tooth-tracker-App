@@ -2,9 +2,9 @@ const express = require("express");
 const { adminRouter } = require("./routes/admin.routes");
 const { userRouter, connection } = require("./routes/user.routes");
 require('dotenv').config();
-
+const cors=require("cors")
 const app = express();
-
+app.use(cors)
 app.use(express.json());
 
 app.use('/', userRouter);
@@ -20,7 +20,6 @@ app.listen(process.env.port,() => {
             console.log(`Connected to DB`);
         }
     });
-    
     console.log(`running at ${process.env.port}`);
 })
 

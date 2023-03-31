@@ -2,6 +2,7 @@
 function slot(e){
     let cat=e;
 window.location.href="./booking1.html"
+localStorage.setItem("categ",JSON.stringify(e));
 console.log(e);
 }
 document.getElementById("condition").addEventListener("click",(e)=>{
