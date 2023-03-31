@@ -49,7 +49,7 @@ function displaySlot(result){
 
             localStorage.setItem("slotid",JSON.stringify(item.id))
 
-            window.location.href = "./payment.html"
+            // window.location.href = "./payment.html"
          })
     })
 }
@@ -72,10 +72,7 @@ window.location.href="payment.html"
 }
 
 
-document.getElementById("slottime").addEventListener("change",(e)=>{
-    console.log(e.target.value);
-    slotfetch(e.target.value)
-})
+
 
 
 
