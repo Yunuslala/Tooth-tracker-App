@@ -11,6 +11,7 @@ async function slotsdata(){
         let res=await fetch(`${url}/slots`);
         if(res.ok){
             let result=await res.json();
+            console.log(result);
             displaySlot(result)
             
     } 
@@ -50,6 +51,7 @@ function displaySlot(result){
             localStorage.setItem("slotid",JSON.stringify(item.id))
 
             // window.location.href = "./payment.html"
+            slotfetch(item.id);
          })
     })
 }
@@ -72,6 +74,10 @@ window.location.href="payment.html"
 }
 
 
+// document.getElementById("slottime").addEventListener("change",(e)=>{
+//     console.log(e.target.value);
+//     slotfetch(e.target.value)
+// })
 
 
 
@@ -79,21 +85,48 @@ window.location.href="payment.html"
 
 
 
+async function  slotfetch(slotId){
+   try {
+    let res = await fetch(`${url}/newMeeting`,{
+        method: 'POST',
+        headers: {
+            'content-type':'application/json',
+            'authorization':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTcsIm5hbWUiOiJhZG1pbjEiLCJwaG9uZSI6IjEyMzQ1Njc4OTAiLCJlbWFpbCI6ImFkbWluMUBnbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYiQwNyRxY2lQS3FWZFFRRFd4Lno0VGlKb2hlejc5eXpVZ3hYejRnV0tCU3VJVHo1Y3lvVDNlS292cSIsInJvbGUiOiJhZG1pbiIsImRhdGVfb2ZfYmlydGgiOiIyMDAzLTA4LTEyVDAwOjAwOjAwLjAwMFoiLCJpYXQiOjE2ODAyNzI2MDR9.JZS6Zx-uqJzMPbkcD_CMzSsBoMK8KKMFdG95fx8EvN8'
+        },
+        body: JSON.stringify({'category':"cleaning", 'sub_category':'teeth_cleaning',slotId , 'doctorId':'1'})
+    })
+    console.log(res);
+    if(res.status == 200){
+        res = await res.json();
+        console.log(res);
+        const cost = getCost(`${url}/getCost/${slotId}`);
+        console.log(cost);
+        window.location.href = "./payment.html"
+    }
+    else{
+        alert(res.msg);
+    }
+   }
+   catch (error) {
+    console.log(error);
+   }
+}
 
-async function  slotfetch(val){
+async function getCost(url){
     try {
-        let res=await fetch(`${url}/newMeeting`,{
-            method:"POST",
+        let cost = await fetch(url,{
+            method:'GET',
             headers:{
-                "Content-Type":"Application/json"
-            },
-            body:JSON.stringify({"category":"cleaning","sub_category":cat,"docId":id,"time":val})
-        });
-        if(res.ok){
-            let result=res.json()
-            console.log(result);
-        }
-    } catch (error) {
-        
+                authorization:'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTcsIm5hbWUiOiJhZG1pbjEiLCJwaG9uZSI6IjEyMzQ1Njc4OTAiLCJlbWFpbCI6ImFkbWluMUBnbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYiQwNyRxY2lQS3FWZFFRRFd4Lno0VGlKb2hlejc5eXpVZ3hYejRnV0tCU3VJVHo1Y3lvVDNlS292cSIsInJvbGUiOiJhZG1pbiIsImRhdGVfb2ZfYmlydGgiOiIyMDAzLTA4LTEyVDAwOjAwOjAwLjAwMFoiLCJpYXQiOjE2ODAyNzI2MDR9.JZS6Zx-uqJzMPbkcD_CMzSsBoMK8KKMFdG95fx8EvN8'
+            }
+        })
+
+        cost = await cost.json();
+        console.log(cost);
+        localStorage.setItem('cost',JSON.stringify(cost.cost));
+        return cost;
+    }
+    catch (error) {
+        console.log(error);
     }
 }
