@@ -39,6 +39,7 @@ console.log(userDetails)
 console.log(Token)
 res.cookie("token",Token,"username",userDetails.name)
     res.send("signup progress")
+    // res.redirect("https://tooth-tracker.cyclic.app/")
 })
 
 module.exports={githubRoute}
