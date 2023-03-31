@@ -20,6 +20,7 @@ app.listen(process.env.port,() => {
             console.log(`Connected to DB`);
         }
     });
+    
     console.log(`running at ${process.env.port}`);
 })
 
