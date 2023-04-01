@@ -33,14 +33,14 @@ function displaySlot(result){
         let p4 = document.createElement("p")
 
         h1.innerHTML = item.sub_category
-        p1.innerHTML = `${item.duration}  min`
+        
 
         let date = new Date(`${item.start}`)
 
         p2.innerHTML = `Date-${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`
         p3.innerHTML = `Start-${date.getHours()}:${date.getMinutes()}`
         p4.innerHTML = `Duration(min) - ${item.duration}`
-        btn.append(h1,p1,p2,p3,p4)
+        btn.append(h1,p2,p3,p4)
 
         let time=  document.getElementById("time")
        //console.log(doc);
