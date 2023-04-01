@@ -18,6 +18,7 @@ async function getUsers() {
     users = await users.json();
     //console.log(users);
     let div = document.getElementById("user")
+    div.innerHTML="none"
     div.style.display = "block"
 
     users.map((item) => {
@@ -54,6 +55,7 @@ async function getDoctors() {
     let div2 = document.getElementById("doctor")
     div2.style.display="block"
     let d = document.getElementById("d1")
+    d.innerHTML="none"
     
 
     doctors.map((item)=>{
@@ -91,6 +93,8 @@ async function getSlots() {
     let div3 = document.getElementById("slot")
     div3.style.display = "block"
     let d = document.getElementById("s")
+
+    d.innerHTML="none"
 
     slot.map((item) => {
         let div = document.createElement("div")
