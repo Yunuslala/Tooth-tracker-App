@@ -82,16 +82,17 @@
       </div>
       <div class="signup-classic">
         <h2>Or Login by using</h2>
-        <form class="form">
+
+        <form id="login" class="form">
           <fieldset class="email">
-            <input type="email" placeholder="email" />
+            <input id="email" type="email" placeholder="email" />
           </fieldset>
           <fieldset class="password">
-            <input type="password" placeholder="password" />
+            <input id="password" type="password" placeholder="password" />
           </fieldset>
           <button type="submit" class="btn">Log in</button>
           <p id="pppp">User not Registered <a href="./signup.html" style="text-decoration-line: underline; background-color: #f4f1e8;">Sign Up</a></p> 
-          
+
         </form>
       </div>
     </div>
@@ -100,6 +101,7 @@
 
 </body>
 </html>
+<script src="./login.js"></script>
 <script>
   function home(){
     window.location.href="./index.html"
