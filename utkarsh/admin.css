@@ -16,7 +16,7 @@ body{
     display: flex;
     
     margin: auto;
-    border: 1px solid green;
+   
     width: 60%;
     height: 100px;
 
@@ -28,7 +28,7 @@ body{
 
 #img{
     width: 20%;
-    border: 1px solid red;
+   
     display: grid;
     justify-content: flex-end;
     align-items: center;
@@ -40,7 +40,7 @@ body{
     width: 40%;
     border-radius: 50%;
     margin-left: 50%;
-    border: 1px solid yellow ;
+    
     
 }
 
@@ -51,7 +51,8 @@ body{
     font-size: 40px;
     text-align: right;
     
-    border:1px solid red;
+   
+    margin-bottom: 40px;
     
     
 }
@@ -63,12 +64,12 @@ body{
 
 #btn{
     width: 15%;
-    border: 1px solid red;
+    
 }
 
 #display{
     width: 85%;
-    border:1px solid green
+    border: 1px solid #0a2540;
 }
 
 #btn button{
@@ -78,6 +79,7 @@ body{
     background-color: white;
     font-size: 20px;
     font-weight: 600;
+    border: 0.5px solid rgb(199, 184, 184)
 }
 #btn button:hover{
     background-color: #0a2540;
@@ -108,7 +110,96 @@ body{
 }
 #user{
     display: none;
+    
 }
+#d1{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: center;
+    padding-top: 20px;
+}
+#d1 img{
+    width: 50%;
+}
+#form1{
+    margin: auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 15px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    margin-bottom: 10px;
+}
+
+#form1 button{
+padding-left: 20px;
+padding-right: 20px;
+padding-top: 10px;
+padding-bottom: 10px;
+background-color: white;
+font-size: 16px;
+border-radius: 5px;
+}
+#form1 button:hover{
+background-color: #007bff;
+color: white;
+cursor: pointer;
+border-radius: 5px;
+}
+
+#s div{
+    border: 1px solid #0a2540;
+    font-size: 20px;
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+}
+
+#s{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 20px;
+    text-align: center;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+#form2{
+    width: 30%;
+    margin: auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 15px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    margin-bottom: 10px;
+    text-align: center;
+    font-weight: 600;
+    
+}
+
+#form2 button{
+padding-left: 20px;
+padding-right: 20px;
+padding-top: 10px;
+padding-bottom: 10px;
+background-color: white;
+font-size: 16px;
+border-radius: 5px;
+
+
+}
+#form2 button:hover{
+background-color: #007bff;
+color: white;
+cursor: pointer;
+border-radius: 5px;
+}
+#f2 input{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    
+}
+
 
 @media screen and (max-width: 1000px) {
 
@@ -136,6 +227,14 @@ body{
 
     #w p{
         display: none;
+    }
+    #admin{
+        width: 100%;
+        text-align: center;
+    }
+    #user{
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
     }
 
 }

@@ -36,10 +36,10 @@ const userDetails=await fetch("https://api.github.com/user",{
     }
 }).then((res)=>res.json())
 console.log(userDetails)
-console.log(Token)
-res.cookie("token",Token,"username",userDetails.name)
+// console.log(Token)
+res.cookie("token",Token,"username",userDetails.name,userDetails.email)
     res.send("signup progress")
-    // res.redirect("https://tooth-tracker.cyclic.app/")
+    // res.redirect("https://taupe-conkies-95d9ec.netlify.app//")
 })
 
 module.exports={githubRoute}

@@ -17,18 +17,35 @@ async function getUsers() {
     })
     users = await users.json();
     //console.log(users);
+    
     let div = document.getElementById("user")
-    div.innerHTML="none"
+    div.innerHTML=""
     div.style.display = "block"
+    let div2 = document.getElementById("doctor")
+    div2.style.display="none"
+    let div3 = document.getElementById("slot")
+    div3.style.display = "none"
+    div.style.display="grid"
+    div.style.gridTemplateColumns="repeat(4,1fr)"
+    div.style.color="black"
+    div.style.textAlign="center"
+    div.style.marginTop="20px"
+    div.style.gap="20px"
 
     users.map((item) => {
+        let d = document.createElement("div")
 
         let img = document.createElement("img")
         img.src = "./user.jpg"
         let h1 = document.createElement("h1")
         h1.innerHTML = item.name
 
-        div.append(img, h1)
+        d.append(img, h1)
+        d.style.border="1px solid orange"
+        d.style.borderRadius="20%"
+
+        div.append(d)
+        
 
 
     })
@@ -54,18 +71,26 @@ async function getDoctors() {
     div1.style.display = "none"
     let div2 = document.getElementById("doctor")
     div2.style.display="block"
+    
+    let div3 = document.getElementById("slot")
+    div3.style.display = "none"
     let d = document.getElementById("d1")
-    d.innerHTML="none"
+    d.innerHTML=""
+    
     
 
     doctors.map((item)=>{
+
+        let div = document.createElement("div")
 
         let img = document.createElement("img")
         img.src="./doctor.jpg"
         let h1=document.createElement("h1")
         h1.innerHTML = item.name
 
-        d.append(img,h1)
+        div.append(img,h1)
+
+        d.append(div)
 
 
     })
@@ -94,22 +119,31 @@ async function getSlots() {
     div3.style.display = "block"
     let d = document.getElementById("s")
 
-    d.innerHTML="none"
+    d.innerHTML=""
+    
 
     slot.map((item) => {
         let div = document.createElement("div")
+
+        let x = item.isbooked
+        let y="";
+        if(x==1){
+            y="Booked"
+        }else{
+            y="Empty"
+        }
         
 
         let h3 = document.createElement("h3")
-        h3.innerHTML=item.category
+        h3.innerHTML=`category:-${item.category}`
         let p1 = document.createElement("p")
-        p1.innerHTML = item.sub_category
+        p1.innerHTML = `sub-category:-${item.sub_category}`
         let p2 = document.createElement("p")
-        p2.innerHTML = item.meetingId
+        p2.innerHTML = `Meeting-ID:-${item.meetingId}`
         let p3 = document.createElement("p")
-        p3.innerHTML = item.start
+        p3.innerHTML = `Start-Time:-${item.start}`
         let p4 = document.createElement("p")
-        p4.innerHTML = item.isbooked
+        p4.innerHTML = `Slot:-${y}`
 
 
         div.append(h3,p1,p2,p3,p4)

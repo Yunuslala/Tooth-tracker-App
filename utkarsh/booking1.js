@@ -27,6 +27,8 @@ fetchDoc()
 async function fetchDoc(){
     try {
         let res=await fetch(`${url}/doctors`);
+        // let vari = await res.json()
+        // console.log(vari)
         if(res.ok){
             let ans=await res.json();
             console.log(ans);

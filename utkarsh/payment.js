@@ -4,7 +4,8 @@
 
 
 
-
+let total = JSON.parse(localStorage.getItem("cost"))
+//console.log(total)
 
 let select = document.getElementById("change")
 
@@ -73,6 +74,15 @@ card_button.onclick = ()=>{
     }
     
 }
+
+
+let prepaid = document.getElementById("prepaid_total_amount")
+prepaid.innerHTML=`Total :- ${total}`
+
+let cod = document.getElementById("cash_total_amount")
+cod.innerHTML = `Total :- ${total}`
+
+
 
 
 

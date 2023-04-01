@@ -2,7 +2,7 @@ const express=require("express");
 const { use } = require("passport");
 const app=express();
 const {githubRoute}=require("./Github")
-
+const path=require("path")
 const {userRouter}=require("./routes/UserRoute")
 const {connection}=require("./config/db")
 const cookieParser=require("cookie-parser")
@@ -14,8 +14,11 @@ app.use("/auth",githubRoute)
 // app.use("/auth",googleRoute)
 app.use(cookieParser())
 app.use("/user",userRouter)
- 
-   //Google Auth//
+// app.get("/", (req, res) => {
+//     app.use(express.static(path.join(__dirname, "LoginSignup", "login.html")));
+//     res.sendFile(path.resolve(__dirname, "LoginSignup", "login.html"));
+//   });
+//    //Google Auth//
 
 app.get('/auth/google',
 passport.authenticate('google', { scope: ['profile',`email`] }));
@@ -24,6 +27,10 @@ app.get('/auth/google/callback',
 passport.authenticate('google', { failureRedirect: '/login',session:false }),
 function(req, res) {
   // Successful authentication, redirect home.
+  const token = jwt.sign({ user_id: req.user._id }, privateKey, { expiresIn: 60*60 });
+    // const rtoken = jwt.sign({ user_id: req.user._id }, rprivateKey, { expiresIn: 60*60*7 });
+    // console.log(token)
+    // res.redirect(`/?token=${token}&rtoken=${rtoken}`);
   console.log(req.user)
 //   res.json({"user":req.user})
   res.redirect('/');
