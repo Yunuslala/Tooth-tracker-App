@@ -61,7 +61,7 @@ function displaySlot(result){
 
 let condition=document.getElementById("condition")
 let cond = localStorage.getItem("condition")
-condition.innerHTML=cond
+condition.innerHTML=cat
 let backbtn = document.getElementById("back")
 backbtn.addEventListener("click",backFunc)
 function backFunc(){

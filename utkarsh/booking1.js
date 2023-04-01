@@ -1,6 +1,6 @@
-// let condition=document.getElementById("condition")
-// let cond = localStorage.getItem("condition")
-// condition.innerHTML=cond
+let condition=document.getElementById("condition")
+let cond = localStorage.getItem("categ")
+condition.innerHTML=cond
 // let d1 = document.getElementById("d1")
 
 // d1.addEventListener("click",myFunc1)
@@ -17,11 +17,11 @@
 //     d2.style.color="white"
 //     window.location.href="./booking2.html"
 // }
-// let backbtn = document.getElementById("back")
-// backbtn.addEventListener("click",backFunc)
-// function backFunc(){
-//     window.location.href="booking.html"
-// }
+let backbtn = document.getElementById("back")
+backbtn.addEventListener("click",backFunc)
+function backFunc(){
+    window.location.href="booking.html"
+}
 const url="http://tooth-tracker.cyclic.app/"
 fetchDoc()
 async function fetchDoc(){

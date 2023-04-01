@@ -9,6 +9,7 @@ body{
     height: 100px;
     color: white;
     
+    
 }
 
 #navbar > div{
@@ -27,7 +28,7 @@ body{
 
 #img{
     width: 20%;
-    border: 1px solid red;
+    
     display: grid;
     justify-content: flex-end;
     align-items: center;
@@ -48,6 +49,7 @@ body{
     margin: auto;
     margin-top: 40px;
     margin-bottom: 10px;
+    font-size: 30px;
 }
 hr{
     width: 60%;
@@ -82,6 +84,7 @@ margin-bottom: 40px;
     color: #007bff;
     background-color: white;
     border: 0.3px solid rgb(78, 75, 75);
+    
 
 } 
 
@@ -113,3 +116,43 @@ margin-bottom: 40px;
     background-color: black;
     color: white;
 }
+
+
+@media screen and (max-width: 1000px) {
+
+    #navbar > div{
+        width: 100%;
+        flex-direction: column;
+        text-align: center;
+        margin: auto;
+    }
+
+    #mid{
+        flex-direction: column;
+        margin-top: 50px;
+    }
+
+    #img{
+        margin: auto;
+        display: grid;
+        justify-content: center;
+        padding-right: 10%;
+    }
+    #w{
+        margin: auto;
+    }
+
+    #w p{
+        display: none;
+    }
+
+    #doctors{
+        grid-template-columns: repeat(1,1fr);
+    }
+
+    #toggle{
+        width: 50%;
+    }
+
+
+}    
