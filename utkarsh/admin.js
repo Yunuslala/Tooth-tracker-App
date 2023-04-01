@@ -17,18 +17,31 @@ async function getUsers() {
     })
     users = await users.json();
     //console.log(users);
+    
     let div = document.getElementById("user")
-    div.innerHTML="none"
+    div.innerHTML=""
     div.style.display = "block"
+    div.style.display="grid"
+    div.style.gridTemplateColumns="repeat(4,1fr)"
+    div.style.color="black"
+    div.style.textAlign="center"
+    div.style.marginTop="20px"
+    div.style.gap="20px"
 
     users.map((item) => {
+        let d = document.createElement("div")
 
         let img = document.createElement("img")
         img.src = "./user.jpg"
         let h1 = document.createElement("h1")
         h1.innerHTML = item.name
 
-        div.append(img, h1)
+        d.append(img, h1)
+        d.style.border="1px solid orange"
+        d.style.borderRadius="20%"
+
+        div.append(d)
+        
 
 
     })
@@ -55,17 +68,22 @@ async function getDoctors() {
     let div2 = document.getElementById("doctor")
     div2.style.display="block"
     let d = document.getElementById("d1")
-    d.innerHTML="none"
+    d.innerHTML=""
+    
     
 
     doctors.map((item)=>{
+
+        let div = document.createElement("div")
 
         let img = document.createElement("img")
         img.src="./doctor.jpg"
         let h1=document.createElement("h1")
         h1.innerHTML = item.name
 
-        d.append(img,h1)
+        div.append(img,h1)
+
+        d.append(div)
 
 
     })
@@ -94,7 +112,8 @@ async function getSlots() {
     div3.style.display = "block"
     let d = document.getElementById("s")
 
-    d.innerHTML="none"
+    d.innerHTML=""
+    
 
     slot.map((item) => {
         let div = document.createElement("div")
