@@ -124,18 +124,26 @@ async function getSlots() {
 
     slot.map((item) => {
         let div = document.createElement("div")
+
+        let x = item.isbooked
+        let y="";
+        if(x==1){
+            y="Booked"
+        }else{
+            y="Empty"
+        }
         
 
         let h3 = document.createElement("h3")
-        h3.innerHTML=item.category
+        h3.innerHTML=`category:-${item.category}`
         let p1 = document.createElement("p")
-        p1.innerHTML = item.sub_category
+        p1.innerHTML = `sub-category:-${item.sub_category}`
         let p2 = document.createElement("p")
-        p2.innerHTML = item.meetingId
+        p2.innerHTML = `Meeting-ID:-${item.meetingId}`
         let p3 = document.createElement("p")
-        p3.innerHTML = item.start
+        p3.innerHTML = `Start-Time:-${item.start}`
         let p4 = document.createElement("p")
-        p4.innerHTML = item.isbooked
+        p4.innerHTML = `Slot:-${y}`
 
 
         div.append(h3,p1,p2,p3,p4)

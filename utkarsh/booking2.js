@@ -1,7 +1,7 @@
 
 
 
-let id=JSON.parse(localStorage.getItem("doctid"))
+let docid=JSON.parse(localStorage.getItem("doctid"))
 let cat =JSON.parse(localStorage.getItem("categ"))
 
 let url="https://tooth-tracker.cyclic.app"
@@ -11,7 +11,7 @@ async function slotsdata(){
         let res=await fetch(`${url}/slots`);
         if(res.ok){
             let result=await res.json();
-            console.log(result);
+            //console.log(result);
             displaySlot(result)
             
     } 
@@ -27,7 +27,7 @@ function displaySlot(result){
         console.log(item);
         let btn = document.createElement("button")
         let h1 = document.createElement("h1")
-        let p1 = document.createElement("p")
+        
         let p2 = document.createElement("p")
         let p3 = document.createElement("p")
         let p4 = document.createElement("p")
@@ -47,11 +47,24 @@ function displaySlot(result){
          time.append(btn)
 
          btn.addEventListener("click",(event)=>{
+            console.log(item);
 
             localStorage.setItem("slotid",JSON.stringify(item.id))
 
+            let {category,sub_category,id} = item
+
+            let obj={
+                category,
+                sub_category,
+                "slotId":id,
+                "doctorId":docid
+
+
+            }
+            console.log(obj)
+
             // window.location.href = "./payment.html"
-            slotfetch(item.id);
+           slotfetch(obj);
          })
     })
 }
@@ -85,7 +98,7 @@ window.location.href="payment.html"
 
 
 
-async function  slotfetch(slotId){
+async function  slotfetch(obj){
    try {
     let res = await fetch(`${url}/newMeeting`,{
         method: 'POST',
@@ -93,18 +106,21 @@ async function  slotfetch(slotId){
             'content-type':'application/json',
             'authorization':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTcsIm5hbWUiOiJhZG1pbjEiLCJwaG9uZSI6IjEyMzQ1Njc4OTAiLCJlbWFpbCI6ImFkbWluMUBnbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYiQwNyRxY2lQS3FWZFFRRFd4Lno0VGlKb2hlejc5eXpVZ3hYejRnV0tCU3VJVHo1Y3lvVDNlS292cSIsInJvbGUiOiJhZG1pbiIsImRhdGVfb2ZfYmlydGgiOiIyMDAzLTA4LTEyVDAwOjAwOjAwLjAwMFoiLCJpYXQiOjE2ODAyNzI2MDR9.JZS6Zx-uqJzMPbkcD_CMzSsBoMK8KKMFdG95fx8EvN8'
         },
-        body: JSON.stringify({'category':"cleaning", 'sub_category':'teeth_cleaning',slotId , 'doctorId':'1'})
+        body: JSON.stringify(obj)
     })
     console.log(res);
     if(res.status == 200){
         res = await res.json();
         console.log(res);
-        const cost = getCost(`${url}/getCost/${slotId}`);
+        const cost = getCost(`${url}/getCost/${obj.slotId}`);
         console.log(cost);
+        alert(res.msg)
         window.location.href = "./payment.html"
     }
     else{
+        console.log(res)
         alert(res.msg);
+        
     }
    }
    catch (error) {
@@ -122,7 +138,7 @@ async function getCost(url){
         })
 
         cost = await cost.json();
-        console.log(cost);
+        //console.log(cost);
         localStorage.setItem('cost',JSON.stringify(cost.cost));
         return cost;
     }
