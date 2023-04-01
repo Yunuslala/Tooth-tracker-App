@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../Style/login.css">
+    <link rel="stylesheet" href="../Style/index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Damion&family=Poppins&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/c8503353a1.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/3b8f492a1b.js" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+<body>
+  <nav>
+    <input type="checkbox" id="check">
+    <label for="check" class="checkbtn">
+      <i class="fas fa-bars"></i>
+    </label>
+    <label onclick="home()" class="logo"><img src="../images/Tooth Tracker.png"/>
+      <p id="logo">
+        Tooth<span class="logo1">Tracker</span>
+      </p>
+    </label>
+    <ul>
+      <li>
+        <a href="#">General</a>
+        <ul id="nav-dropdown">
+          <li><a href="#">CROWNS</a></li>
+          <li><a href="#">NIGHT GUARDS</a></li>
+          <li><a href="#">GUM THERAPY</a></li>
+          <li><a href="#">DENTAL FILLING</a></li>
+          <li><a href="#">DENTURIES</a></li>
+          <li><a href="#">STAINED TEETH</a></li>
+          <li><a href="#">TOOTHACHE</a></li>
+          <li><a href="#">TEETH GRINDING</a></li>
+          <li><a href="#">MISSING TOOTH</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">Cosmetic</a>
+        <ul id="nav-dropdown">
+          <li><a href="#">TEETH WHITENING</a></li>
+          <li><a href="#">BONDING</a></li>
+          <li><a href="#">BOTOX</a></li>
+          <li><a href="#">VENEERS</a></li>
+          <li><a href="#">INVISALINGN</a></li>
+          <li><a href="#">SMILE MAKEOVER</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">Surgical</a>
+        <ul id="nav-dropdown">
+          <li><a href="#">IMPLANTS</a></li>
+          <li><a href="#">EXTRACTIONS</a></li>
+          <li><a href="#">ROOT CANAL</a></li>
+          <li><a href="#">BONE GRAFTS</a></li>
+          <li><a href="#">BRIDGES</a></li>
+        </ul>
+      </li>
+      <!-- <li><a href="#">About</a></li> -->
+      <li><a href="#" id="nav_newPatient">Account</a>
+        <ul id="nav-dropdown">
+          <li><a href="./login.html">LOG IN</a></li>
+          <li><a href="./signup.html">SIGNUP</a></li>
+          <li><a href="#">ADMIN LOGIN</a></li>
+        </ul>
+      </li>
+      <li><a href="#" id="nav_btn">Book Online</a></li>
+    </ul>
+  </nav>
+  <div class="aaa">
+    <img src="https://www.villagedentaldtc.com/wp-content/uploads/2021/08/village-dental-dentists.jpg"/>
+    <div class="signup">
+      <div class="signup-connect">
+        <h1>Create your account</h1>
+        <a href="#" id="btn-fb" class="btn btn-social btn-facebook"><i class="fa fa-facebook"></i> Sign in with Facebook</a>
+        <a href="#" id="btn-git" class="btn btn-social btn-github"><i class="fa-brands fa-github"></i> Sign in with Github</a>
+        <a href="#" id="btn-google" class="btn btn-social btn-google"><i class="fa fa-google"></i> Sign in with Google</a>
+      </div>
+      <div class="signup-classic">
+        <h2>Or Login by using</h2>
+
+        <form id="login" class="form">
+          <fieldset class="email">
+            <input id="email" type="email" placeholder="email" />
+          </fieldset>
+          <fieldset class="password">
+            <input id="password" type="password" placeholder="password" />
+          </fieldset>
+          <button type="submit" class="btn">Log in</button>
+          <p id="pppp">User not Registered <a href="./signup.html" style="text-decoration-line: underline; background-color: #f4f1e8;">Sign Up</a></p> 
+
+        </form>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
+<script src="../Script/login.js"></script>
