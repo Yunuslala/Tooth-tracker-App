@@ -21,6 +21,10 @@ async function getUsers() {
     let div = document.getElementById("user")
     div.innerHTML=""
     div.style.display = "block"
+    let div2 = document.getElementById("doctor")
+    div2.style.display="none"
+    let div3 = document.getElementById("slot")
+    div3.style.display = "none"
     div.style.display="grid"
     div.style.gridTemplateColumns="repeat(4,1fr)"
     div.style.color="black"
@@ -67,6 +71,9 @@ async function getDoctors() {
     div1.style.display = "none"
     let div2 = document.getElementById("doctor")
     div2.style.display="block"
+    
+    let div3 = document.getElementById("slot")
+    div3.style.display = "none"
     let d = document.getElementById("d1")
     d.innerHTML=""
     
