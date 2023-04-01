@@ -236,3 +236,11 @@ Signup
     content: '\f023';
     opacity: 0.5;
 }
+.signup-classic .dob::after {
+  content: none;
+}
+.signup-classic .phone::after {
+  content: "\f095";
+  
+  opacity: 0.5;
+}
