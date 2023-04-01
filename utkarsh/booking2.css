@@ -40,44 +40,77 @@ body{
     width: 40%;
     border-radius: 50%;
     margin-left: 50%;
-    
-    
-}
-#mid{
-    margin: auto;
-    width: 60%;
-    
-    text-align:left;
-    padding-top: 40px;
    
+    
 }
 
 #condition{
-width:60%;
-margin: auto;
-display: grid;
-grid-template-columns: repeat(2,1fr);
-gap: 20px;
-padding-top: 40px;
-
+    width: 60%;
+    margin: auto;
+    margin-top: 40px;
+    margin-bottom: 10px;
+    
+    font-size: 30px;
+}
+hr{
+    width: 60%;
+    margin: auto;
 }
 
-#condition button{
 
-    padding-top: 20px;
-    padding-bottom: 20px;
-    font-size: 20px;
-    border-radius: 10px;
-    color: #007bff;
-    background-color: white;
-    border: 0.3px solid rgb(78, 75, 75);
-} 
+#mid{
+    width: 60%;
+    margin: auto;
+    text-align: left;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+#time{
+    width:60%;
+    margin: auto;
+    margin-bottom: 40px;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    
+}
 
-#condition button:hover{
-    cursor: pointer;
+#time button{
+background-color: white;
+border: 1px solid #0a2540;
+border-radius: 15px;
+font-size: 20px;
+}
+
+#time button:hover{
     background-color: #007bff;
     color: white;
+    cursor: pointer;
+}
 
+
+#toggle{
+    width:60%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+#toggle button{
+    width: 30%;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    
+    font-size: 20px;
+    border-radius: 10px;
+    background-color: white;
+    border: 0.3px solid rgb(78, 75, 75);
+}
+#toggle button:hover{
+    cursor: pointer;
+    background-color: black;
+    color: white;
 }
 
 @media screen and (max-width: 1000px) {
@@ -91,7 +124,7 @@ padding-top: 40px;
 
     #mid{
         flex-direction: column;
-        
+        margin-top: 50px;
     }
 
     #img{
@@ -99,6 +132,7 @@ padding-top: 40px;
         display: grid;
         justify-content: center;
         padding-right: 10%;
+        width: 30%;
     }
     #w{
         margin: auto;
@@ -107,8 +141,21 @@ padding-top: 40px;
     #w p{
         display: none;
     }
-    #condition {
-        grid-template-columns: repeat(1,1fr);
+
+    #mid{
+        flex-direction: column;
     }
-    
+
+    #time{
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    #toggle{
+        margin:auto;
+        
+        text-align: center;
+    }
+
+
+
 }

@@ -114,14 +114,16 @@ class slot{
   userId:number
   slotID:number
   ID:number
+  DocID:number
   categoryOfMeet:string
   sub_categoryOfMeet:string
-  constructor(ID:number,userId:number,slotId:number,category:string,sub_categoryOfMeet:string){
+  constructor(ID:number,userId:number,slotId:number,category:string,sub_categoryOfMeet:string,DocID:number){
     this.ID=ID;
     this.categoryOfMeet=category;
     this.sub_categoryOfMeet=sub_categoryOfMeet;
     this.slotID=slotId;
     this.userId=userId;
+    this.DocID=DocID
   }
 
   calculatetime(slot:slot){
@@ -169,7 +171,9 @@ class slot{
     this.Id=Id;
     this.ispaid=false
   }
- 
+  payam(){
+    return this.amount
+  }
  }
 
 export class ScheduleSystem{
@@ -202,7 +206,6 @@ export class ScheduleSystem{
     const currentDate=new Date();
     let dur=duration.split(" ");
    let dura=parseInt(dur[0])*60
-   console.log(dura);
     const year = currentDate.getFullYear();
     const month = currentDate.getMonth() + 1;
     const day = currentDate.getDate();
@@ -219,24 +222,37 @@ export class ScheduleSystem{
     this.slot.push(slots);
     return slots
   }
-   slotsof(){
+   Allslots(){
     return this.slot
   }
-  innitializeMeeting(category:string,sub_category:string,userID:number){
+  AllUser(){
+    return this.user
+  }
+  AllPayment(){
+    return this.AllPayment
+  }
+  AllMeeting(){
+    return this.AllMeeting
+  }
+  AllDoctor(){
+    return this.AllDoctor
+  }
+  innitializeMeeting(category:string,sub_category:string,userID:number,DocID:number,time:string){
     let id=this.Meeting.length+1;
     let slotid:number=1;
-    let check=this.slot.map((item)=>{
-      if(item.category==category&&item.sub_category==sub_category){
+    let check=this.slot.filter((item)=>{
+      if(item.category==category&&item.sub_category==sub_category && item.start_time==time){
         item.isbooked=true;
         item.meetingId=id;
         slotid=item.ID
-        return true
+        return item
       }
     })
-      if(check){
-        let meeting=new Meeting(id,userID,slotid,category,sub_category);
+    // console.log(check.length>0);
+      if(check.length>0){
+        let meeting=new Meeting(id,userID,slotid,category,sub_category,DocID);
         this.Meeting.push(meeting);
-        return meeting
+        return {meeting,check}
       }
       else{
         return false
@@ -252,32 +268,41 @@ export class ScheduleSystem{
     return hours + ":" + minutes + " " + ampm;
   }
   checkAloteeSlotCost(uid:number){
-    let meet=this.Meeting.map((item)=>{
+    let meet=this.Meeting.filter((item)=>{
     if(item.userId ==uid){
       return item
     }
   })
    let meetid= meet[0]?.slotID
-   console.log(meetid);
     let bookslot=this.slot.filter((item)=>{
       if(item.isbooked && item.ID==meetid){
      return item
       }
     })
-    let bookid=bookslot[0].meetingId
-    const bookmeet=this.Meeting.filter((item)=>item.ID==bookid)
-   let cost= bookmeet[0].calculatecost(bookslot[0])
-   return cost
+    if(bookslot.length>0){
+      let bookid=bookslot[0]?.meetingId
+      const bookmeet=this.Meeting.filter((item)=>item.ID==bookid)
+     let cost= bookmeet[0].calculatecost(bookslot[0])
+     return cost
+    }else{
+      return false
+    }
+    
   }
-  initializePayment(id:number){
+  initializePayment(id:number,payType:string){
     let cost=this.checkAloteeSlotCost(id)
-    let bookslot=this.Meeting.filter((item)=>item.userId==id)
-   let bookid=bookslot[0].slotID
-    let payID=this.Payment.length+1;
-    let payment=new Peyment(id,bookid,payID,cost,"CARD");
-    payment.ispaid=true;
-    this.Payment.push(payment)
-    return payment
+    if(cost){
+      let bookslot=this.Meeting.filter((item)=>item.userId==id)
+      let bookid=bookslot[0].slotID
+       let payID=this.Payment.length+1;
+       let payment=new Peyment(id,bookid,payID,cost,payType);
+       payment.ispaid=true;
+       this.Payment.push(payment)
+       return payment
+    }else{
+      return false
+    }
+    
   }
  }
 
@@ -289,19 +314,17 @@ export class ScheduleSystem{
 let system=new ScheduleSystem();
 
 let users=system.initializeUser("yunus","20","yunus@gmail.com",969510765);
-console.log(users);
-
+// console.log(users);
 let slots=system.initializeSlot("cleani","teethCleaning","1:30 am","1 hr");
 let slots2=system.initializeSlot("cleaning","teethWhitening","13:30 pm","1 hr");
 let slots3=system.initializeSlot("cleaning","teethCleaning","14:30 pm","1 hr");
-
-console.log(system.slotsof());
-
-let meet=system.innitializeMeeting("cleaning","teethWhitening",1)
+// console.log(system.Allslots());
+let meet=system.innitializeMeeting("cleaning","teethWhitening",1,2,"1:30 PM")
 console.log("meet",meet);
 
-console.log("slots",system.slotsof());
-
-let opa=system.initializePayment(1)
-console.log(opa);
+console.log("slots",system.Allslots());
+let opa=system.initializePayment(1,"CARD")
+const cost=system.checkAloteeSlotCost(1)
+console.log(cost);
+// console.log(opa);
 
