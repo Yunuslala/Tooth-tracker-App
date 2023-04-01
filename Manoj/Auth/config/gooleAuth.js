@@ -7,7 +7,7 @@ require("dotenv").config()
 passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL: "http://localhost:4500/auth/google/callback"
+    callbackURL: "https://tooth-tracker.cyclic.app/auth/google/callback"
   },
    async function(accessToken, refreshToken, profile, cb) {
     let email = profile._json.email
