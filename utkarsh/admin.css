@@ -110,4 +110,32 @@ body{
     display: none;
 }
 
+@media screen and (max-width: 1000px) {
 
+    #navbar > div{
+        width: 100%;
+        flex-direction: column;
+        text-align: center;
+        margin: auto;
+    }
+
+    #mid{
+        flex-direction: column;
+        
+    }
+
+    #img{
+        margin: auto;
+        display: grid;
+        justify-content: center;
+        padding-right: 10%;
+    }
+    #w{
+        margin: auto;
+    }
+
+    #w p{
+        display: none;
+    }
+
+}
