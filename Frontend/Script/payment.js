@@ -8,6 +8,15 @@ let total = JSON.parse(localStorage.getItem("cost"));
 total=total*500;
 let cat=JSON.parse(localStorage.getItem("categ"));
 //console.log(total)
+let slotId=localStorage.getItem("slotid");
+let userId=localStorage.getItem("doctid")
+const payobj=
+{
+  userId: 1,
+  slotId,
+  amount: total,
+  method: "CARD"
+}
 
 let select = document.getElementById("change")
 
@@ -108,21 +117,13 @@ checkoutButton.addEventListener("click", async function () {
  let striperes=stripe.redirectToCheckout({ sessionId: ans.id })
  striperes.then((res)=>{
   console.log(res)
-  paymentsavedb();
+  paymentsavedb(payobj);
  }).catch((err)=>{
 console.log("err",err)
  })
 });
 
-let slotId=localStorage.getItem("slotid");
-let userId=localStorage.getItem("doctid")
-const payobj=
-{
-  userId: 1,
-  slotId,
-  amount: total,
-  method: "CARD"
-}
+
 
 async function paymentsavedb(payobj){
   try {
