@@ -116,7 +116,7 @@ async function  slotfetch(obj){
         window.location.href = "./payment.html"
     }
     else{
-        console.log(res)
+        console.log(await res.json());
         alert(res.msg);
         
     }

@@ -15,7 +15,7 @@ const payobj=
   userId: 1,
   slotId,
   amount: total,
-  method: "CARD"
+  method: "card"
 }
 
 let select = document.getElementById("change")
