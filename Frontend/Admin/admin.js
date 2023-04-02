@@ -31,8 +31,9 @@ async function getUsers() {
     div.style.gridTemplateColumns = "repeat(4,1fr)"
     div.style.color = "black"
     div.style.textAlign = "center"
-    div.style.marginTop = "20px"
+    
     div.style.gap = "20px"
+    div.style.margin="20px"
 
     users.map((item) => {
         let d = document.createElement("div")
