@@ -4,7 +4,7 @@ document.querySelector(".users").addEventListener("click", () => {
 })
 
 
-
+const token=JSON.parse(localStorage.getItem("token"))
 var baseURL = 'https://tooth-tracker.cyclic.app'
 
 async function getUsers() {
@@ -230,3 +230,41 @@ async function postDoctors(obj){
 
 }
 
+///Meetings-Section
+
+meeting()
+async function meeting(){
+    try {
+        const res=await fetch(`${baseURL}/admin/allMeetings`, {
+            method: 'GET',
+            headers: {
+                'content-type': 'application/json',
+                'authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTcsIm5hbWUiOiJhZG1pbjEiLCJwaG9uZSI6IjEyMzQ1Njc4OTAiLCJlbWFpbCI6ImFkbWluMUBnbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYiQwNyRxY2lQS3FWZFFRRFd4Lno0VGlKb2hlejc5eXpVZ3hYejRnV0tCU3VJVHo1Y3lvVDNlS292cSIsInJvbGUiOiJhZG1pbiIsImRhdGVfb2ZfYmlydGgiOiIyMDAzLTA4LTEyVDAwOjAwOjAwLjAwMFoiLCJHaXRodWIiOm51bGwsImlhdCI6MTY4MDI4NDE4OH0.t6IyQ9lqngiaaHXSZivHpNRtGkgwQqzDq8lijjnS58c'
+            }
+        })
+
+        if(res.ok){
+            let ans=await res.json();
+            DisplayMeet(ans)
+            console.log("ans",ans);
+        }
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+function DisplayMeet(ans){
+    console.log("123");
+    let divs=ans.map((item)=>{
+        ///these data should present on ui
+        let h3 = document.createElement("h3")
+        h3.innerHTML=`category:-${item.category}`
+        let p1 = document.createElement("p")
+        p1.innerHTML = `User-ID:-${item.userId}`
+        let p2 = document.createElement("p")
+        p2.innerHTML = `Doctor-ID:-${item.docterId}`
+        let p3 = document.createElement("p")
+        p3.innerHTML = `Slot-Id:-${item.slotId}`
+    }).join(" ");
+    console.log(divs)
+}

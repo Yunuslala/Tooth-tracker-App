@@ -22,11 +22,19 @@ backbtn.addEventListener("click",backFunc)
 function backFunc(){
     window.location.href="booking.html"
 }
+
+const token=JSON.parse(localStorage.getItem("token"))
 const url="http://tooth-tracker.cyclic.app/"
 fetchDoc()
 async function fetchDoc(){
     try {
-        let res=await fetch(`${url}/doctors`);
+        let res=await fetch(`${url}/doctors`,{
+            // Method:"GET",
+            // headers:{
+            //     "Content-Type":"application/json",
+            //     "authorization":token
+            // }
+        });
         // let vari = await res.json()
         // console.log(vari)
         if(res.ok){

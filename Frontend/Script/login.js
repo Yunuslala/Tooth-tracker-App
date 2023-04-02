@@ -19,6 +19,10 @@ document.querySelector('#login').addEventListener('submit',async (event) => {
         res = await res.json();
         console.log(res);
         alert(res.msg);
+        if(res.msg=="Login Successful as user"){
+            localStorage.setItem("token",JSON.stringify(res.token));
+        }
+        window.location.href="../index.html"
     }
     catch (error) {
         console.log(error);

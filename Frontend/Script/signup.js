@@ -28,7 +28,10 @@ document.querySelector("#register").addEventListener("submit",async (event) => {
         res = await res.json();
         console.log(res);
         alert(res.msg);
-        
+        if(res.msg=="Registration successful as user"){
+            console.log("login success")
+            window.location.href="./login.html"
+        }
     }
     catch (error) {
         console.log(error);

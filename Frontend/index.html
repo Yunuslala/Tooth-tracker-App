@@ -69,7 +69,7 @@
             <li><a href="#">ADMIN LOGIN</a></li>
           </ul>
         </li>
-        <li><a href="#" id="nav_btn">Book Online</a></li>
+        <li><a href="#" id="nav_btn" onClick="Book()">Book Online</a></li>
       </ul>
     </nav>
 
@@ -83,7 +83,7 @@
           <p class="h_top_right_p1">Overland Park Dentist</p>
           <p class="h_top_right_p2">Your great smile begins with the great dentist</p>
           <div class="h_top_right_p3">
-            <button class="hr_b1">Book Online</button>
+            <button class="hr_b1 booked" onClick="Book()">Book Online</button>
             <button class="hr_b2">Call or Text (913) 491-6663</button>
           </div>
           
@@ -184,7 +184,7 @@
         <div class="centered">
           <h1>Book Your Visit Online</h1>
           <p>View available appointments and enjoy dentistry done right. +FREE teeth whitening for life.</p>
-          <button>BOOK ONLINE</button>
+          <button onClick="Book()">BOOK  ONLINE</button>
         </div>
         
 
@@ -230,5 +230,16 @@
 <script>
   function home(){
     window.location.href="./index.html"
+  }
+
+ function Book(){
+    console.log("object");
+    let token=JSON.parse(localStorage.getItem("token"));
+    if(token){
+      window.location.href="./Html/booking.html"
+    }else{
+      alert("Please First Login To Book any appointment")
+    }
+ 
   }
 </script>
