@@ -448,5 +448,35 @@ userRouter.post("/pay", (req, res) => {
     }
   );
 });
+/////stripe 
+
+
+userRouter.post("/payment", async (req, res) => {
+  const { product } = req.body;
+  const session = await stripe.checkout.sessions.create({
+      payment_method_types: ["card"],
+      line_items: [
+          {
+              price_data: {
+                  currency: "inr",
+                  product_data: {
+                      Cat: product.cat
+                  },
+                  unit_amount: product.amount ,
+              },
+              quantity: product.quantity,
+          },
+      ],
+      mode: "payment",
+      success_url: "https://gorgeous-kringle-2552f9.netlify.app/",
+      cancel_url: `https://gorgeous-kringle-2552f9.netlify.app/cancel.html`,
+      // success_url: `${YOUR_DOMAIN}/success.html`,
+      // cancel_url: `${YOUR_DOMAIN}/cancel.html`,
+  });
+  res.json({ id: session.id });
+});
+
+
+
 
 module.exports = { userRouter, connection };

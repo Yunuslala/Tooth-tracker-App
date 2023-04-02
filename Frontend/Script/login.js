@@ -19,10 +19,14 @@ document.querySelector('#login').addEventListener('submit',async (event) => {
         res = await res.json();
         console.log(res);
         alert(res.msg);
-        if(res.msg=="Login Successful as user"){
+        if(res.role=="user"){
             localStorage.setItem("token",JSON.stringify(res.token));
+            window.location.href="../index.html"
         }
-        window.location.href="../index.html"
+        if(res.role=="admin"){
+            window.location.href="../Admin/admin.html"
+        }
+       
     }
     catch (error) {
         console.log(error);
