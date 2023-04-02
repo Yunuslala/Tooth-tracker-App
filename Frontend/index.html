@@ -233,8 +233,7 @@
   }
 
  function Book(){
-    console.log("object");
-    let token=JSON.parse(localStorage.getItem("token"));
+    let token=localStorage.getItem("token");
     if(token){
       window.location.href="./Html/booking.html"
     }else{

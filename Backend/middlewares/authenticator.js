@@ -16,6 +16,8 @@ const authenticate = (role) => {
                 return res.status(403).send({msg: `Access denied`});
             }
             else{
+                console.log(decoded)
+                req.body.email=decoded.email
                 next();
             }
         });

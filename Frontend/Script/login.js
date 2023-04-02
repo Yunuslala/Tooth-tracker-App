@@ -20,11 +20,11 @@ document.querySelector('#login').addEventListener('submit',async (event) => {
         console.log(res);
         alert(res.msg);
         if(res.role=="user"){
-            localStorage.setItem("token",JSON.stringify(res.token));
+            localStorage.setItem("token",res.token);
             window.location.href="../index.html"
         }
         if(res.role=="admin"){
-            localStorage.setItem("token",JSON.stringify(res.token));
+            localStorage.setItem("token",res.token);
             window.location.href="../Admin/admin.html"
         }
        

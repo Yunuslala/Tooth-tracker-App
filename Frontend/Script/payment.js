@@ -106,21 +106,25 @@ var checkoutButton = document.getElementById("btn");
 checkoutButton.addEventListener("click", async function () {
  const resul= await fetch("https://tooth-tracker.cyclic.app/payment", {
     headers: {'Content-Type': 'application/json',
-    "authorization":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDIsIm5hbWUiOiJzYWlmIiwicGhvbmUiOiI5MTcwOTU3NDkxIiwiZW1haWwiOiJhQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJiJDA3JGFvN2dQNkxOQVpFTGVpRTM1US5oQnU0VnFkR0lTQUlnbU5UNnVqa01aVXRPU2MyNHF4aG91Iiwicm9sZSI6InVzZXIiLCJkYXRlX29mX2JpcnRoIjoiMjAwMy0wMi0yMlQwMDowMDowMC4wMDBaIiwiR2l0aHViIjpudWxsLCJpYXQiOjE2ODA0MzUxMjN9.rBCyoU5j3lp_y8WDenRlfIVgECqw3aO8DjcH3rtX6zg"
+    "authorization":localStorage.getItem("token")
   },
     method: "POST",
     body: JSON.stringify({amount:total ,
         quantity:1,
         name:cat })
   });
- let ans= await resul.json()
- let striperes=stripe.redirectToCheckout({ sessionId: ans.id })
+ let ans= await resul.json();
+ console.log(ans);
+ if(ans){
+  paymentsavedb(payobj);
+  let striperes=stripe.redirectToCheckout({ sessionId: ans.id })
  striperes.then((res)=>{
   console.log(res)
-  paymentsavedb(payobj);
+
  }).catch((err)=>{
 console.log("err",err)
  })
+ }
 });
 
 
@@ -131,10 +135,11 @@ async function paymentsavedb(payobj){
       method:"POST",
       headers:{
         "Content-Type":"application/json",
-    "authorization":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDIsIm5hbWUiOiJzYWlmIiwicGhvbmUiOiI5MTcwOTU3NDkxIiwiZW1haWwiOiJhQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJiJDA3JGFvN2dQNkxOQVpFTGVpRTM1US5oQnU0VnFkR0lTQUlnbU5UNnVqa01aVXRPU2MyNHF4aG91Iiwicm9sZSI6InVzZXIiLCJkYXRlX29mX2JpcnRoIjoiMjAwMy0wMi0yMlQwMDowMDowMC4wMDBaIiwiR2l0aHViIjpudWxsLCJpYXQiOjE2ODA0MzUxMjN9.rBCyoU5j3lp_y8WDenRlfIVgECqw3aO8DjcH3rtX6zg"
+    "authorization":localStorage.getItem("token")
       },
       body:JSON.stringify(payobj)
     });
+    console.log(await respo.json());
     if(respo.ok){
       let result=await respo.json();
       localStorage.setItem("paymentstaus","payment stored")

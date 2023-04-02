@@ -78,11 +78,11 @@ backbtn.addEventListener("click",backFunc)
 function backFunc(){
 window.location.href="booking1.html"
 }
-let nextbtn = document.getElementById("next")
-nextbtn.addEventListener("click",nextFunc)
-function nextFunc(){
-window.location.href="payment.html"
-}
+// let nextbtn = document.getElementById("next")
+// nextbtn.addEventListener("click",nextFunc)
+// function nextFunc(){
+// window.location.href="payment.html"
+// }
 
 
 // document.getElementById("slottime").addEventListener("change",(e)=>{
@@ -106,7 +106,7 @@ async function  slotfetch(obj){
         },
         body: JSON.stringify(obj)
     })
-    console.log(res);
+    // console.log(await res.json());
     if(res.status == 200){
         res = await res.json();
         console.log(res);
