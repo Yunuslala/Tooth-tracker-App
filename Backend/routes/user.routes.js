@@ -442,9 +442,24 @@ userRouter.post("/pay", (req, res) => {
             err: err.message,
           });
       }
-      res
+      const mail = {
+        from:process.env.from_email,
+        to: req.body.email,
+        subject:"Slot Confirmation Mail",
+        text:` Your slot has hasbeen booked with userid ${data.userId} Payment Successfull  `
+      }
+      console.log(mail);
+      transporter.sendMail(mail,(err,response)=>{
+        if(err){
+          console.log(err);
+        }
+        else{
+          console.log(response);
+        }
+        res
         .status(200)
-        .send({ msg: "Transaction saved to DB successfully", rows });
+          .send({ msg: "Transaction saved to DB successfully", rows });
+      })
     }
   );
 });
