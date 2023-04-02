@@ -4,7 +4,9 @@
 
 
 
-let total = JSON.parse(localStorage.getItem("cost"))
+let total = JSON.parse(localStorage.getItem("cost"));
+total=total*500;
+let cat=JSON.parse(localStorage.getItem("categ"));
 //console.log(total)
 
 let select = document.getElementById("change")
@@ -76,54 +78,68 @@ cash_button.onclick = ()=>{
 // }
 
 
-let prepaid = document.getElementById("prepaid_total_amount")
-prepaid.innerHTML=`Total :- ${total}`
+// let prepaid = document.getElementById("prepaid_total_amount")
+// prepaid.innerHTML=`Total :- ${total}`
 
-let cod = document.getElementById("cash_total_amount")
-cod.innerHTML = `Total :- ${total}`
+// let cod = document.getElementById("cash_total_amount")
+// cod.innerHTML = `Total :- ${total}`
 
 
 ////stripe part
 
+// let token=JSON.stringify(localStorage.getItem("token"));
+// eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDIsIm5hbWUiOiJzYWlmIiwicGhvbmUiOiI5MTcwOTU3NDkxIiwiZW1haWwiOiJhQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJiJDA3JGFvN2dQNkxOQVpFTGVpRTM1US5oQnU0VnFkR0lTQUlnbU5UNnVqa01aVXRPU2MyNHF4aG91Iiwicm9sZSI6InVzZXIiLCJkYXRlX29mX2JpcnRoIjoiMjAwMy0wMi0yMlQwMDowMDowMC4wMDBaIiwiR2l0aHViIjpudWxsLCJpYXQiOjE2ODA0MzUxMjN9.rBCyoU5j3lp_y8WDenRlfIVgECqw3aO8DjcH3rtX6zg
+// console.log(token)
+
 var stripe = Stripe("pk_test_51MreRESAewYLUjTaDaclpjqFiPr8PiYEobV7WLt493XWu4MBAGoSgrmOnQyGyaj7TYNlzd5jQH3CASl7IA1V9P2400qjg1TM6p");
 var checkoutButton = document.getElementById("btn");
 
-checkoutButton.addEventListener("click", function () {
-  fetch("http://localhost:8080/payment", {
-    headers: {'Content-Type': 'application/json'},
+checkoutButton.addEventListener("click", async function () {
+ const resul= await fetch("https://tooth-tracker.cyclic.app/payment", {
+    headers: {'Content-Type': 'application/json',
+    "authorization":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDIsIm5hbWUiOiJzYWlmIiwicGhvbmUiOiI5MTcwOTU3NDkxIiwiZW1haWwiOiJhQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJiJDA3JGFvN2dQNkxOQVpFTGVpRTM1US5oQnU0VnFkR0lTQUlnbU5UNnVqa01aVXRPU2MyNHF4aG91Iiwicm9sZSI6InVzZXIiLCJkYXRlX29mX2JpcnRoIjoiMjAwMy0wMi0yMlQwMDowMDowMC4wMDBaIiwiR2l0aHViIjpudWxsLCJpYXQiOjE2ODA0MzUxMjN9.rBCyoU5j3lp_y8WDenRlfIVgECqw3aO8DjcH3rtX6zg"
+  },
     method: "POST",
-    body: JSON.stringify({
-        "product": {
-            "name": "iPhone 12", 
-            "image": "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-12-purple-select-2021?wid=470&hei=556&fmt=jpeg&qlt=95&.v=1617130317000", 
-            "amount": 100,
-            "quantity": 1
-        }})
-  })
-    .then(function (response) {
-      // console.log(response.json());
-      // localStorage.setItem("result",JSON.stringify(response.json()));
-      return response.json();
-
-    })
-    .then(function (session) {
-      console.log("session")
-      return stripe.redirectToCheckout({ sessionId: session.id });
-    })
-    .then(function (result) {
-      // If redirectToCheckout fails due to a browser or network
-      // error, you should display the localized error message to your
-      // customer using error.message.
-      localStorage.setItem("result",JSON.stringify(result));
-      console.log("resul")
-      if (result.error) {
-        alert(result.error.message);
-      }
-      
-    })
-    .catch(function (error) {
-      console.error("Error:", error);
-    });
+    body: JSON.stringify({amount:total ,
+        quantity:1,
+        name:cat })
+  });
+ let ans= await resul.json()
+ let striperes=stripe.redirectToCheckout({ sessionId: ans.id })
+ striperes.then((res)=>{
+  console.log(res)
+  paymentsavedb();
+ }).catch((err)=>{
+console.log("err",err)
+ })
 });
 
+let slotId=localStorage.getItem("slotid");
+let userId=localStorage.getItem("doctid")
+const payobj=
+{
+  userId: 1,
+  slotId,
+  amount: total,
+  method: "CARD"
+}
 
+async function paymentsavedb(payobj){
+  try {
+    let respo=await fetch("https://tooth-tracker.cyclic.app/pay",{
+      method:"POST",
+      headers:{
+        "Content-Type":"application/json",
+    "authorization":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDIsIm5hbWUiOiJzYWlmIiwicGhvbmUiOiI5MTcwOTU3NDkxIiwiZW1haWwiOiJhQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJiJDA3JGFvN2dQNkxOQVpFTGVpRTM1US5oQnU0VnFkR0lTQUlnbU5UNnVqa01aVXRPU2MyNHF4aG91Iiwicm9sZSI6InVzZXIiLCJkYXRlX29mX2JpcnRoIjoiMjAwMy0wMi0yMlQwMDowMDowMC4wMDBaIiwiR2l0aHViIjpudWxsLCJpYXQiOjE2ODA0MzUxMjN9.rBCyoU5j3lp_y8WDenRlfIVgECqw3aO8DjcH3rtX6zg"
+      },
+      body:JSON.stringify(payobj)
+    });
+    if(respo.ok){
+      let result=await respo.json();
+      localStorage.setItem("paymentstaus","payment stored")
+      console.log(result)
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}

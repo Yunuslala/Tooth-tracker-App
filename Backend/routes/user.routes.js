@@ -463,8 +463,7 @@ userRouter.post("/payment", async (req, res) => {
                       Cat: product.cat
                   },
                   unit_amount: product.amount ,
-              },
-              quantity: product.quantity,
+              }
           },
       ],
       mode: "payment",

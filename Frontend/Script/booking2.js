@@ -48,11 +48,9 @@ function displaySlot(result){
 
          btn.addEventListener("click",(event)=>{
             console.log(item);
-
             localStorage.setItem("slotid",JSON.stringify(item.id))
-
             let {category,sub_category,id} = item
-
+            
             let obj={
                 category,
                 sub_category,
