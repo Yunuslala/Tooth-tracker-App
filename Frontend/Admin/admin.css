@@ -90,6 +90,9 @@ body{
 #doctor{
     display: none;
 }
+#meeting{
+    display: none;
+}
 
 #form1{
     text-align: center;
@@ -119,6 +122,13 @@ body{
     padding-right: 20px;
     text-align: center;
     padding-top: 20px;
+    gap: 20px;
+}
+#d1 div{
+    border: 1px solid orange;
+    border-radius: 20px;
+    padding-top: 20px;
+
 }
 #d1 img{
     width: 50%;
@@ -155,6 +165,12 @@ border-radius: 5px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 
 }
+#s div:hover{
+    cursor: pointer;
+    background-color: #0a2540;
+    color: white;
+}
+
 
 #s{
     display: grid;
@@ -199,6 +215,20 @@ border-radius: 5px;
     margin-bottom: 10px;
     
 }
+
+#meeting div{
+    border: 1px solid orange;
+    margin-left: 20px;
+    margin-right: 20px;
+    border-radius: 20px;
+}
+#meeting div:hover{
+    cursor: pointer;
+    background-color: #0a2540;
+    color: white;
+}
+
+
 
 
 @media screen and (max-width: 1000px) {
