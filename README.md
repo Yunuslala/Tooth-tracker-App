@@ -3,7 +3,7 @@ Dentalist Booking System
 
 <div align="center">
 <h2>Tooth Tracker<h2>
-<h5>A dentist booking system is a software application that allows patients to schedule appointments with their dentist online, rather than having to call the dental office. The system typically provides a user-friendly interface that enables patients to choose the date and time of their appointment, select their preferred dentist, and enter their personal information.</h5>
+<h5>Tooth Tracker is a dentist booking system that allows patients to schedule appointments with their dentist online, rather than having to call the dental office. The system typically provides a user-friendly interface that enables patients to choose the date and time of their appointment, select their preferred dentist, and enter their personal information.</h5>
 
   ![Tooth Tracker](https://user-images.githubusercontent.com/112674221/229418884-02368d0e-c361-4314-be19-0be2243a6d5b.png)
   <br>
