@@ -16,26 +16,41 @@ Dentalist Booking System
 HTML,CSS,Javascript (Frontend) <br>
 Font awesome (Library) <br>
 MongoDB,MySql (Database) <br>
-Node.js,Express.js,Sequelize (Framework) 
+Node.js,Express.js,Sequelize,Typescript (Framework) 
 Stripe (Payment)
   <br>
   
   <h2>Version of npm packages used:</h2>
   "bcrypt": "^5.1.0",
+  <br>
     "cookie-parser": "^1.4.6",
+  <br>
     "cors": "^2.8.5",
+  <br>
     "dotenv": "^16.0.3",
+  <br>
     "express": "^4.18.2",
+  <br>
     "jsonwebtoken": "^9.0.0",
+  <br>
     "mongoose": "^7.0.3",
+  <br>
     "mysql2": "^3.2.0",
+  <br>
     "nodemailer": "^6.9.1",
+  <br>
     "nodemon": "^2.0.22",
+  <br>
     "passport": "^0.6.0",
+  <br>
     "passport-facebook": "^3.0.0",
+  <br>
     "passport-google-oauth20": "^2.0.0",
+  <br>
     "ts-node": "^10.9.1",
+  <br>
     "typescript": "^5.0.2",
+  <br>
     "uuid": "^9.0.0"
   
   
