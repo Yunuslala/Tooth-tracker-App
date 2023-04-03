@@ -12,6 +12,10 @@ Dentalist Booking System
   
 
 </div>
+<h2>Flow:-</h2>
+<br>
+<img src="https://user-images.githubusercontent.com/112674221/229432409-847bfc8d-a219-4bb5-b9fc-689ecded3c81.jpeg"
+
   
   <h2>Techstack : </h2>
 HTML,CSS,Javascript (Frontend) <br>
