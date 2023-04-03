@@ -41,11 +41,12 @@ Stripe (Payment)
   
   <h1>1.  Home Page  </h1><br><br>
   <img src="https://user-images.githubusercontent.com/112674221/229420654-84b13fc6-0a57-4474-94a0-fdb7b936278c.png">
-  ![Screenshot (447)](https://user-images.githubusercontent.com/112674221/229420654-84b13fc6-0a57-4474-94a0-fdb7b936278c.png)
+  
   
   <h1>2. Login  </h1>
   <br><br>
-  ![Screenshot (448)](https://user-images.githubusercontent.com/112674221/229420797-a23ee471-6dfb-4e43-b36d-eea25cc90c00.png)
+  <img src="https://user-images.githubusercontent.com/112674221/229420797-a23ee471-6dfb-4e43-b36d-eea25cc90c00.png">
+
   
    <h1>3. Signup  </h1>
   <br><br>
@@ -61,9 +62,11 @@ Stripe (Payment)
   
   <h1>5. Payment  </h1>
   <br><br>
-  ![Screenshot (453)](https://user-images.githubusercontent.com/112674221/229421230-aee77286-862f-4ed5-86a0-fef24e5bc466.png)
+  <img src="https://user-images.githubusercontent.com/112674221/229421230-aee77286-862f-4ed5-86a0-fef24e5bc466.png">
+  
   
   <h1>6. Admin  </h1>
   <br><br>
-  ![Screenshot (454)](https://user-images.githubusercontent.com/112674221/229421317-03273d17-fbf0-4bcc-8429-f57876561885.png)
+  <img src="https://user-images.githubusercontent.com/112674221/229421317-03273d17-fbf0-4bcc-8429-f57876561885.png">
+  
 
