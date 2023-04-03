@@ -20,7 +20,7 @@ Dentalist Booking System
   <h2>Techstack : </h2>
 HTML,CSS,Javascript (Frontend) <br>
 Font awesome (Library) <br>
-MongoDB,MySql (Database) <br>
+MySql (Database) <br>
 Node.js,Express.js,Sequelize,Typescript (Framework) 
 Stripe (Payment)
   <br>
