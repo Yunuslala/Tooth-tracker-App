@@ -40,6 +40,7 @@ Stripe (Payment)
   
   
   <h1>1.  Home Page  </h1><br><br>
+  <img src="https://user-images.githubusercontent.com/112674221/229420654-84b13fc6-0a57-4474-94a0-fdb7b936278c.png">
   ![Screenshot (447)](https://user-images.githubusercontent.com/112674221/229420654-84b13fc6-0a57-4474-94a0-fdb7b936278c.png)
   
   <h1>2. Login  </h1>
