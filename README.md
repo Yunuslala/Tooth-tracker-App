@@ -89,5 +89,5 @@ Stripe (Payment)
   <br><br>
   <img src="https://user-images.githubusercontent.com/112674221/229421317-03273d17-fbf0-4bcc-8429-f57876561885.png">
   
-<h1>Authors</h1>
-- [@Mohammad Yunus](https://github.com/Yunuslala)
+## Authors
+- [@Mohd Yunus](https://github.com/Yunuslala)
