@@ -91,3 +91,4 @@ Stripe (Payment)
   
 ## Authors
 - [@Mohd Yunus](https://github.com/Yunuslala)
+- [@Manoj Kumar](https://github.com/manoj7654)
