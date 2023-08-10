@@ -482,8 +482,8 @@ userRouter.post("/payment", async (req, res) => {
           },
       ],
       mode: "payment",
-      success_url: "https://gorgeous-kringle-2552f9.netlify.app/",
-      cancel_url: `https://gorgeous-kringle-2552f9.netlify.app/cancel.html`,
+      success_url: " https://uninterested-weather-2204-frontend.vercel.app/",
+      cancel_url: ` https://uninterested-weather-2204-frontend.vercel.app/cancel.html`,
       // success_url: `${YOUR_DOMAIN}/success.html`,
       // cancel_url: `${YOUR_DOMAIN}/cancel.html`,
   });
