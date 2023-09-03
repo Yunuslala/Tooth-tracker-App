@@ -9,7 +9,7 @@ document.querySelector('#login').addEventListener('submit',async (event) => {
     }
 
     try {
-        let res = await fetch('https://tooth-tracker.cyclic.app/login',{
+        let res = await fetch('http://localhost:5500/login',{
             method:'POST',
             headers:{
                 'content-type':'application/json'

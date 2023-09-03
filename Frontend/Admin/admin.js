@@ -4,15 +4,16 @@ document.querySelector(".users").addEventListener("click", () => {
 })
 
 
-const token = JSON.parse(localStorage.getItem("token"))
-var baseURL = 'https://tooth-tracker.cyclic.app'
+
+var baseURL = 'http://localhost:5500'
 
 async function getUsers() {
+    let token=localStorage.getItem("token")
     let users = await fetch(`${baseURL}/admin/users`, {
         method: 'GET',
         headers: {
-            'content-type': 'application/json',
-            'authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTcsIm5hbWUiOiJhZG1pbjEiLCJwaG9uZSI6IjEyMzQ1Njc4OTAiLCJlbWFpbCI6ImFkbWluMUBnbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYiQwNyRxY2lQS3FWZFFRRFd4Lno0VGlKb2hlejc5eXpVZ3hYejRnV0tCU3VJVHo1Y3lvVDNlS292cSIsInJvbGUiOiJhZG1pbiIsImRhdGVfb2ZfYmlydGgiOiIyMDAzLTA4LTEyVDAwOjAwOjAwLjAwMFoiLCJHaXRodWIiOm51bGwsImlhdCI6MTY4MDI4NDE4OH0.t6IyQ9lqngiaaHXSZivHpNRtGkgwQqzDq8lijjnS58c'
+             'Content-Type': 'application/json',
+    'Authorization': `Bearer ${token}`,
         }
     })
     users = await users.json();
@@ -61,14 +62,15 @@ document.querySelector(".doctors").addEventListener("click", () => {
 
 
 async function getDoctors() {
-    let doctor = await fetch(`${baseURL}/doctors`, {
+    const token = localStorage.getItem("token")
+    let doctors = await fetch(`${baseURL}/doctors`, {
         method: 'GET',
         headers: {
-            'content-type': 'application/json',
-            'authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTcsIm5hbWUiOiJhZG1pbjEiLCJwaG9uZSI6IjEyMzQ1Njc4OTAiLCJlbWFpbCI6ImFkbWluMUBnbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYiQwNyRxY2lQS3FWZFFRRFd4Lno0VGlKb2hlejc5eXpVZ3hYejRnV0tCU3VJVHo1Y3lvVDNlS292cSIsInJvbGUiOiJhZG1pbiIsImRhdGVfb2ZfYmlydGgiOiIyMDAzLTA4LTEyVDAwOjAwOjAwLjAwMFoiLCJHaXRodWIiOm51bGwsImlhdCI6MTY4MDI4NDE4OH0.t6IyQ9lqngiaaHXSZivHpNRtGkgwQqzDq8lijjnS58c'
+             'Content-Type': 'application/json',
+    'Authorization': `Bearer ${token}`,
         }
     })
-    doctors = await doctor.json();
+    doctors = await doctors.json();
     console.log(doctors);
     let div1 = document.getElementById("user")
     div1.style.display = "none"
@@ -106,15 +108,16 @@ document.querySelector(".slots").addEventListener("click", () => {
 })
 
 async function getSlots() {
+    const token = localStorage.getItem("token")
     let slots = await fetch(`${baseURL}/admin/allSlots`, {
         method: 'GET',
         headers: {
-            'content-type': 'application/json',
-            'authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTcsIm5hbWUiOiJhZG1pbjEiLCJwaG9uZSI6IjEyMzQ1Njc4OTAiLCJlbWFpbCI6ImFkbWluMUBnbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYiQwNyRxY2lQS3FWZFFRRFd4Lno0VGlKb2hlejc5eXpVZ3hYejRnV0tCU3VJVHo1Y3lvVDNlS292cSIsInJvbGUiOiJhZG1pbiIsImRhdGVfb2ZfYmlydGgiOiIyMDAzLTA4LTEyVDAwOjAwOjAwLjAwMFoiLCJHaXRodWIiOm51bGwsImlhdCI6MTY4MDI4NDE4OH0.t6IyQ9lqngiaaHXSZivHpNRtGkgwQqzDq8lijjnS58c'
+             'Content-Type': 'application/json',
+    'Authorization': `Bearer ${token}`,
         }
 
     })
-    slot = await slots.json();
+    const slot = await slots.json();
     //console.log(slot);
     let div1 = document.getElementById("user")
     div1.style.display = "none"
@@ -183,12 +186,12 @@ s1.onclick = (event) => {
 
 
 async function postDoctors(obj) {
-
+    const token = localStorage.getItem("token")
     let data = await fetch(`${baseURL}/admin/addDoctor`, {
         method: "POST",
         headers: {
-            'content-type': 'application/json',
-            'authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTcsIm5hbWUiOiJhZG1pbjEiLCJwaG9uZSI6IjEyMzQ1Njc4OTAiLCJlbWFpbCI6ImFkbWluMUBnbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYiQwNyRxY2lQS3FWZFFRRFd4Lno0VGlKb2hlejc5eXpVZ3hYejRnV0tCU3VJVHo1Y3lvVDNlS292cSIsInJvbGUiOiJhZG1pbiIsImRhdGVfb2ZfYmlydGgiOiIyMDAzLTA4LTEyVDAwOjAwOjAwLjAwMFoiLCJHaXRodWIiOm51bGwsImlhdCI6MTY4MDI4NDE4OH0.t6IyQ9lqngiaaHXSZivHpNRtGkgwQqzDq8lijjnS58c'
+             'Content-Type': 'application/json',
+    'Authorization': `Bearer ${token}`,
         },
         body: JSON.stringify(obj)
 
@@ -222,16 +225,21 @@ s2.onclick = (event) => {
 
 
 async function postDoctors(obj) {
-
-    let data = await fetch(`${baseURL}/admin/addSlot`, {
-        method: "POST",
-        headers: {
-            'content-type': 'application/json',
-            'authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTcsIm5hbWUiOiJhZG1pbjEiLCJwaG9uZSI6IjEyMzQ1Njc4OTAiLCJlbWFpbCI6ImFkbWluMUBnbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYiQwNyRxY2lQS3FWZFFRRFd4Lno0VGlKb2hlejc5eXpVZ3hYejRnV0tCU3VJVHo1Y3lvVDNlS292cSIsInJvbGUiOiJhZG1pbiIsImRhdGVfb2ZfYmlydGgiOiIyMDAzLTA4LTEyVDAwOjAwOjAwLjAwMFoiLCJHaXRodWIiOm51bGwsImlhdCI6MTY4MDI4NDE4OH0.t6IyQ9lqngiaaHXSZivHpNRtGkgwQqzDq8lijjnS58c'
-        },
-        body: JSON.stringify(obj)
-
-    })
+    try {
+        const token = localStorage.getItem("token")
+        let data = await fetch(`${baseURL}/admin/addSlot`, {
+            method: "POST",
+            headers: {
+                 'Content-Type': 'application/json',
+                  'Authorization': `Bearer ${token}`,
+            },
+            body: JSON.stringify(obj)
+    
+        })
+    } catch (error) {
+        console.log(error)
+    }
+   
 
     //console.log(obj)
 
@@ -247,12 +255,13 @@ document.querySelector(".Meets").addEventListener("click", () => {
 
 
 async function meeting() {
+    const token = localStorage.getItem("token")
     try {
         const res = await fetch(`${baseURL}/admin/allMeetings`, {
             method: 'GET',
             headers: {
-                'content-type': 'application/json',
-                'authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTcsIm5hbWUiOiJhZG1pbjEiLCJwaG9uZSI6IjEyMzQ1Njc4OTAiLCJlbWFpbCI6ImFkbWluMUBnbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYiQwNyRxY2lQS3FWZFFRRFd4Lno0VGlKb2hlejc5eXpVZ3hYejRnV0tCU3VJVHo1Y3lvVDNlS292cSIsInJvbGUiOiJhZG1pbiIsImRhdGVfb2ZfYmlydGgiOiIyMDAzLTA4LTEyVDAwOjAwOjAwLjAwMFoiLCJHaXRodWIiOm51bGwsImlhdCI6MTY4MDI4NDE4OH0.t6IyQ9lqngiaaHXSZivHpNRtGkgwQqzDq8lijjnS58c'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`,
             }
         })
 

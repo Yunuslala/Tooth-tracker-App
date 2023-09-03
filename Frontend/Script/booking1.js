@@ -24,7 +24,7 @@ function backFunc(){
 }
 
 const token=localStorage.getItem("token")
-const url="http://tooth-tracker.cyclic.app/"
+const url="http://localhost:5500"
 fetchDoc()
 async function fetchDoc(){
     try {

@@ -104,7 +104,7 @@ var stripe = Stripe("pk_test_51MreRESAewYLUjTaDaclpjqFiPr8PiYEobV7WLt493XWu4MBAG
 var checkoutButton = document.getElementById("btn");
 
 checkoutButton.addEventListener("click", async function () {
- const resul= await fetch("https://tooth-tracker.cyclic.app/payment", {
+ const resul= await fetch("http://localhost:5500/payment", {
     headers: {'Content-Type': 'application/json',
     "authorization":localStorage.getItem("token")
   },
@@ -131,7 +131,7 @@ console.log("err",err)
 
 async function paymentsavedb(payobj){
   try {
-    let respo=await fetch("https://tooth-tracker.cyclic.app/pay",{
+    let respo=await fetch("http://localhost:5500/pay",{
       method:"POST",
       headers:{
         "Content-Type":"application/json",

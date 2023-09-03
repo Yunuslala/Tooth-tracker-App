@@ -17,7 +17,7 @@ document.querySelector("#register").addEventListener("submit",async (event) => {
     console.log(payload);
 
     try {
-        let res = await fetch('https://tooth-tracker.cyclic.app/register',{
+        let res = await fetch('http://localhost:5500/register',{
             method:'POST',
             headers:{
                 'content-type':'application/json'
